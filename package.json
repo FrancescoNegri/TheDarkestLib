@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/krasimir/webpack-library-starter.git"
+    "url": "https://github.com/FrancescoNegri/TheDarkestLib.git"
   },
   "keywords": [
     "webpack",
@@ -20,14 +20,15 @@
     "library",
     "universal",
     "umd",
-    "commonjs"
+    "commonjs",
+    "phaser"
   ],
   "author": "Francesco Negri",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/krasimir/webpack-library-starter/issues"
+    "url": "https://github.com/FrancescoNegri/TheDarkestLib/issues"
   },
-  "homepage": "https://github.com/krasimir/webpack-library-starter",
+  "homepage": "https://github.com/FrancescoNegri/TheDarkestLib",
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.51",
     "@babel/core": "^7.0.0-beta.51",
