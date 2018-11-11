@@ -1,7 +1,6 @@
 const Characters = {
-  NPCharacters: require('./npc-characters'),
-  Players: require('./players'),
-  Character: require('./Character')
+  NPCharacter: require('./npc-characters/NPCharacter'),
+  Player: require('./players/Player')
 };
 
 module.exports = Characters;

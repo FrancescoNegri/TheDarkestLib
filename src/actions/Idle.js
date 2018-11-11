@@ -1,9 +1,9 @@
 import Action from './Action';
-import Character from '../sprites/characters/Character';
+import CONST from '../const';
 
 /**
  * Class representing the idle action.
- * @extends TDLib.Components.Actions.TDLAction
+ * @extends TDLib.Components.Actions.Action
  * @memberof TDLib.Components.Actions
  */
 export default class Idle extends Action {
@@ -24,13 +24,13 @@ export default class Idle extends Action {
           this.actor.body.setVelocity(0);
           switch (this.actor.facing) {
 
-            case Character.FACING().LEFT: {
+            case CONST.LEFT: {
               this.actor.anims.play('idle');
               // this.actor.anims.play('idleLeft');
             }
               break;
 
-            case Character.FACING().RIGHT: {
+            case CONST.RIGHT: {
               this.actor.anims.play('idle');
               // this.actor.anims.play('idleRight');
             }

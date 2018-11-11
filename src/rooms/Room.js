@@ -1,4 +1,3 @@
-import Phaser from 'phaser';
 import { Utils, Settings } from './';
 
 /**

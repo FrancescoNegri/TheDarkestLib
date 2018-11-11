@@ -1,6 +1,7 @@
 import Sprite from '../Sprite';
 import Behaviour from '../behaviours';
-import ActionComponent from '../../components';
+import Components from '../../components';
+import CONST from '../../const';
 
 /**
  * The characters namespace.
@@ -31,25 +32,14 @@ export default class Character extends Sprite {
      * @type {Components.ActionComponent}
      * @since 1.0.0
      */
-    this.actions = new ActionComponent(this);
+    this.actions = new Components.ActionComponent(this);
 
     /**
      * The facing of the character.
      * @type {TDLCharacter.FACING}
      * @since 1.0.0
      */
-    this.facing = Character.FACING().RIGHT;
-  }
-
-  /**
-   * The possible facing options of the character.
-   * @since 1.0.0
-   */
-  static FACING() {
-    return {
-      RIGHT: 'facing_right',
-      LEFT: 'facing_left'
-    };
+    this.facing = CONST.RIGHT;
   }
 
   create() {

@@ -78,9 +78,9 @@ export default class ActionComponent extends Component {
    * @param {number} [mode=ActionComponent.DEFAULT_MODE] - The mode to execute the action: ActionComponent.DEFAULT_MODE, ActionComponent.QUEUE_MODE or ActionComponent.PAUSE_MODE.
    * @since 1.0.0
    */
-  add(action, config, mode = ActionComponent.DEFAULT_MODE) {
+  add(Action, config, mode = ActionComponent.DEFAULT_MODE) {
 
-    let newAction = new Actions[action](this, this.actor, config);
+    let newAction = new Action(this, this.actor, config);
 
     switch (mode) {
       case ActionComponent.DEFAULT_MODE: {

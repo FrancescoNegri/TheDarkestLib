@@ -1,4 +1,3 @@
-import Phaser from 'phaser';
 import Behaviour from './behaviours';
 import BehaviourComponent from '../components';
 
