@@ -4,9 +4,9 @@ import CONST from './const';
  */
 
 var TDLib = {
-  boot: require('./boot'),
   Actions: require('./actions'),
   Components: require('./components'),
+  Game: require('./boot/Game'),
   Rooms: require('./rooms'),
   Sprites: require('./sprites'),
   Utils: require('./utils')

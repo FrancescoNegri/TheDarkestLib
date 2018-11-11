@@ -1,4 +1,4 @@
-import Settings from './Settings';
+import Settings from '../boot/Settings';
 import Utils from './Utils';
 
 /**
