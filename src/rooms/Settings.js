@@ -7,7 +7,11 @@ var Settings = {
   INVENTORY_HEIGHT_IN_TILES_DESKTOP: 1,
   ROOM_FRAME_IN_TILES_DESKTOP: 0.5,
   ROOM_FRAME_IN_TILES_MOBILE: 0.25,
-  SCREEN_PROPS: {},
+  SCREEN_PROPS: {
+    // Dinamiche, temporaneo!!
+    calculatedWidth: 683,
+    calculatedHeight: 384
+  },
   DEVICE: ''
 };
 

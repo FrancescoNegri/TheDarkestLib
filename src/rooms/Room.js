@@ -1,4 +1,5 @@
-import { Utils, Settings } from './';
+import Settings from './Settings';
+import Utils from './Utils';
 
 /**
  * The rooms namespace.
@@ -131,6 +132,7 @@ export default class Room extends Phaser.Scene {
     this.player = player.setName('player');
     this.lights.enable(); // Boot Phaser's LightManager
     // this.scene.bringToTop(CursorManager.CURSOR_SCENE_KEY); // Add the cursor to the Room
+    this.scene.bringToTop('CursorScene');
 
     this._setCameraViewport();
     this._createRoom();
@@ -211,9 +213,12 @@ export default class Room extends Phaser.Scene {
    * @since 1.0.0
    */
   _createSprites() {
+    let _this = this;
+
     this.map.objects.forEach(layer => {
       layer.objects.forEach(element => {
-        this[element.name] = eval('new ' + element.type + '(this,' + (element.x + element.width / 2) + ', ' + (element.y - element.height / 2) + ');');
+        _this;
+        this[element.name] = eval('new ' + element.type + '(_this,' + (element.x + element.width / 2) + ', ' + (element.y - element.height / 2) + ');');
         this[element.name].setName(element.name);
       });
     });

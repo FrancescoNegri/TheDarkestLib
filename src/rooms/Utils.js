@@ -1,4 +1,4 @@
-export const Utils = {
+const Utils = {
   scrapeComplexObjKey: (obj, params, searchKey, callback) => {
     if (Array.isArray(obj)) {
       for (let i = 0; i < obj.length; i++) {
@@ -25,3 +25,5 @@ export const Utils = {
     return filename;
   }
 };
+
+module.exports = Utils;
