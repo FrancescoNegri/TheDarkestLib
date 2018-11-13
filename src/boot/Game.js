@@ -1,6 +1,8 @@
 import Settings from './Settings';
 import DebugHeader from './DebugHeader';
 import Utils from '../utils';
+import Managers from '../managers';
+import Systems from '../systems';
 
 export default class Game {
   constructor(config) {
@@ -45,14 +47,14 @@ export default class Game {
   _setPlugins() {
     this.config.plugins = {
       global: [
-        { key: 'RoomManager', plugin: RoomManager, start: false, mapping: 'rooms' },
-        { key: 'CursorManager', plugin: CursorManager, start: false, mapping: 'cursors' }
+        { key: 'RoomSystem', plugin: Systems.RoomSystem, start: false, mapping: 'rooms' },
+        { key: 'CursorSystem', plugin: Systems.CursorSystem, start: false, mapping: 'cursors' }
       ],
       scene: [
-        { key: 'UpdatePlugin', plugin: UpdatePlugin, mapping: 'updates' },
-        { key: 'LightSourceManager', plugin: LightSourceManager, mapping: 'lightSources' },
-        { key: 'LayerManager', plugin: LayerManager, mapping: 'layers' },
-        { key: 'ActionManager', plugin: ActionManager, mapping: 'actions' }
+        { key: 'UpdateManager', plugin: Managers.UpdateManager, mapping: 'updates' },
+        { key: 'LightSourceManager', plugin: Managers.LightSourceManager, mapping: 'lightSources' },
+        { key: 'LayerManager', plugin: Managers.LayerManager, mapping: 'layers' }
+        // { key: 'ActionManager', plugin: ActionManager, mapping: 'actions' }
       ]
     };
   }

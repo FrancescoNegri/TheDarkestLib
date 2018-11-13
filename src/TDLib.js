@@ -7,8 +7,10 @@ var TDLib = {
   Actions: require('./actions'),
   Components: require('./components'),
   Game: require('./boot/Game'),
+  Managers: require('./managers'),
   Rooms: require('./rooms'),
   Sprites: require('./sprites'),
+  Systems: require('./systems'),
   Utils: require('./utils')
 };
 
