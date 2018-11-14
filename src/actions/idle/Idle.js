@@ -1,5 +1,5 @@
-import Action from './Action';
-import CONST from '../const';
+import Action from '../Action';
+import CONST from '../../const';
 
 /**
  * Class representing the idle action.

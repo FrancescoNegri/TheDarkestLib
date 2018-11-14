@@ -1,5 +1,5 @@
-import Action from './Action';
-import FaceTo from './FaceTo';
+import Action from '../Action';
+import FaceTo from '../face-to/FaceTo';
 
 export default class Observe extends Action {
   constructor(invoker, actor, config) {

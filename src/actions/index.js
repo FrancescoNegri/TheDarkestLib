@@ -1,12 +1,12 @@
 const Actions = {
   Action: require('./Action'),
-  Examine: require('./Examine'),
-  FaceTo: require('./FaceTo'),
-  Idle: require('./Idle'),
-  Interact: require('./Interact'),
-  Observe: require('./Observe'),
-  RunTo: require('./RunTo'),
-  WalkTo: require('./WalkTo')
+  Examine: require('./examine/Examine'),
+  FaceTo: require('./face-to/FaceTo'),
+  Idle: require('./idle/Idle'),
+  Interact: require('./interact/Interact'),
+  Observe: require('./observe/Observe'),
+  RunTo: require('./run-to/RunTo'),
+  WalkTo: require('./walk-to/WalkTo')
 };
 
 module.exports = Actions;

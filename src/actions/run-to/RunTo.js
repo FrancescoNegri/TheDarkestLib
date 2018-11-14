@@ -1,5 +1,6 @@
-import Action from './Action';
-import FaceTo from './FaceTo';
+import Action from '../Action';
+import FaceTo from '../face-to/FaceTo';
+import Settings from './Settings';
 
 // da cambiare e mettere tutta dentro l'AWalkTo e fare un Move to che distingua che azioni chiamare?
 export default class RunTo extends Action {
@@ -11,15 +12,15 @@ export default class RunTo extends Action {
         new Action.BaseAction(
           this,
           () => {
-            if (Math.abs(this.actor.x - this.target.x) > RunTo.MICRO_MOVEMENT_RADIUS) {
+            if (Math.abs(this.actor.x - this.target.x) > Settings.MICRO_MOVEMENT_RADIUS) {
               if (this.actor.x < this.target.x) {
                 this.actor.anims.play('run');
                 // this.actor.anims.play('runRight');
-                this.actor.body.setVelocity(RunTo.RUN_VELOCITY);
+                this.actor.body.setVelocity(Settings.RUN_VELOCITY);
               } else if (this.actor.x > this.target.x) {
                 this.actor.anims.play('run');
                 // this.actor.anims.play('runLeft');
-                this.actor.body.setVelocity(-RunTo.RUN_VELOCITY);
+                this.actor.body.setVelocity(-Settings.RUN_VELOCITY);
               }
               console.log('start to run to ', config.target.x);
             } else {
@@ -35,13 +36,5 @@ export default class RunTo extends Action {
         )
       ]
     );
-  }
-
-  static get RUN_VELOCITY() {
-    return 240;
-  }
-
-  static get MICRO_MOVEMENT_RADIUS() {
-    return 20;
   }
 }

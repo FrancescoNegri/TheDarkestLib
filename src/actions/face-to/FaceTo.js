@@ -1,5 +1,6 @@
-import Action from './Action';
-import CONST from '../const';
+import Action from '../Action';
+import CONST from '../../const';
+import Settings from './Settings';
 
 export default class FaceTo extends Action {
   constructor(invoker, actor, config) {
@@ -8,7 +9,7 @@ export default class FaceTo extends Action {
       new Action.BaseAction(
         this,
         () => {
-          if (Math.abs(this.actor.x - this.target.x) > FaceTo.MICRO_MOVEMENT_RADIUS) {
+          if (Math.abs(this.actor.x - this.target.x) > Settings.MICRO_MOVEMENT_RADIUS) {
             if (this.actor.facing === CONST.RIGHT) {
               if (this.actor.x > this.target.x) {
                 this.actor.facing = CONST.LEFT;
@@ -27,9 +28,5 @@ export default class FaceTo extends Action {
         }
       )
     );
-  }
-
-  static get MICRO_MOVEMENT_RADIUS() {
-    return 6;
   }
 }

@@ -1,5 +1,5 @@
-import Action from './Action';
-import WalkTo from './WalkTo';
+import Action from '../Action';
+import WalkTo from '../walk-to/WalkTo';
 
 export default class Examine extends Action {
   constructor(invoker, actor, config) {

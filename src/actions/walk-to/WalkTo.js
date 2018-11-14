@@ -1,5 +1,6 @@
-import Action from './Action';
-import FaceTo from './FaceTo';
+import Action from '../Action';
+import FaceTo from '../face-to/FaceTo';
+import Settings from './Settings';
 
 export default class WalkTo extends Action {
   constructor(invoker, actor, config) {
@@ -10,15 +11,15 @@ export default class WalkTo extends Action {
         new Action.BaseAction(
           this,
           () => {
-            if (Math.abs(this.actor.x - this.target.x) > WalkTo.MICRO_MOVEMENT_RADIUS) {
+            if (Math.abs(this.actor.x - this.target.x) > Settings.MICRO_MOVEMENT_RADIUS) {
               if (this.actor.x < this.target.x) {
                 this.actor.anims.play('walk');
                 // this.actor.anims.play('walkRight');
-                this.actor.body.setVelocity(WalkTo.WALK_VELOCITY);
+                this.actor.body.setVelocity(Settings.WALK_VELOCITY);
               } else if (this.actor.x > this.target.x) {
                 this.actor.anims.play('walk');
                 // this.actor.anims.play('walkLeft');
-                this.actor.body.setVelocity(-WalkTo.WALK_VELOCITY);
+                this.actor.body.setVelocity(-Settings.WALK_VELOCITY);
               }
             } else {
               this.finish();
@@ -34,13 +35,4 @@ export default class WalkTo extends Action {
       ]
     );
   }
-
-  static get WALK_VELOCITY() {
-    return 120;
-  }
-
-  static get MICRO_MOVEMENT_RADIUS() {
-    return 20;
-  }
-
 }
