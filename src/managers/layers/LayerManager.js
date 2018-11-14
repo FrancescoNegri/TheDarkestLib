@@ -1,4 +1,4 @@
-import TDLManager from '../TDLManager';
+import Manager from '../Manager';
 import Settings from './Settings';
 
 /**
@@ -7,7 +7,7 @@ import Settings from './Settings';
  * @memberof TDLib.Plugins.RoomPlugins
  * @since 1.0.0
  */
-export default class LayerManager extends TDLManager {
+export default class LayerManager extends Manager {
   /**
    * Create a new RoomManager.
    * @param {TDLib.Rooms.Room} room - The room in which the layer manager operates.

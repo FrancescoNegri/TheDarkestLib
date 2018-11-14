@@ -1,4 +1,5 @@
 import Actions from '../../actions';
+import Behaviours from '../../sprites/behaviours';
 
 /**
  * Class representing the cursor manager, able to select always the correct graphic for the cursor and to handle pointer events.
@@ -190,28 +191,28 @@ export default class CursorSystem extends Phaser.Plugins.BasePlugin {
    * Set the correct cursor for the target selected.
    * @param {Object} target - The target of the pointer.sceneManager
    * @param {TDLib.Components.ActionComponent} target.behaviour - The SpriteBehaviourComponent of the target.
-   * @param {string} [target.behaviour.type=TDLib.Sprites.Behaviours.Behaviour.INERT] - The type of the sprite behaviour for this target.
+   * @param {string} [target.behaviour.type=TDLib.Sprites.Behaviours.INERT] - The type of the sprite behaviour for this target.
    * @since 1.0.0
    */
-  setCursor(target = { behaviour: { type: TDLib.Sprites.Behaviours.Behaviour.INERT }, room: {} }) {
+  setCursor(target = { behaviour: { type: Behaviours.INERT }, room: {} }) {
     if ('room' in target && target !== target.room.player) {
       switch (target.behaviour.type) {
-        case TDLib.Sprites.Behaviours.Behaviour.INERT: {
+        case Behaviours.INERT: {
           this.cursorScene.cursor.setTexture(CursorSystem.DEFAULT_CURSOR).setOrigin(0.4, 0.33);
         }
           break;
 
-        case TDLib.Sprites.Behaviours.Behaviour.EXAMINABLE: {
+        case Behaviours.EXAMINABLE: {
           this.cursorScene.cursor.setTexture(CursorSystem.EXAMINABLE_CURSOR).setOrigin(0.33, 0.29);
         }
           break;
 
-        case TDLib.Sprites.Behaviours.Behaviour.INTERACTIVE: {
+        case Behaviours.INTERACTIVE: {
           this.cursorScene.cursor.setTexture(CursorSystem.INTERACTIVE_CURSOR).setOrigin(0.4, 0.33);
         }
           break;
 
-        case TDLib.Sprites.Behaviours.Behaviour.TALKABLE: {
+        case Behaviours.TALKABLE: {
           this.cursorScene.cursor.setTexture(CursorSystem.TALKABLE_CURSOR);
         }
           break;

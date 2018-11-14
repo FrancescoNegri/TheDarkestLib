@@ -1,7 +1,7 @@
 const Managers = {
   LayerManager: require('./layers/LayerManager'),
   LightSourceManager: require('./light-sources/LightSourceManager'),
-  TDLManager: require('./TDLManager'),
+  Manager: require('./Manager'),
   UpdateManager: require('./updates/UpdateManager')
 };
 

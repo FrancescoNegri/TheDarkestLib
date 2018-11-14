@@ -1,4 +1,4 @@
-import TDLManager from '../TDLManager';
+import Manager from '../Manager';
 
 /**
  * Class representing the update plugin.
@@ -6,7 +6,7 @@ import TDLManager from '../TDLManager';
  * @memberof TDLib.Plugins.RoomPlugins
  * @since 1.0.0
  */
-export default class UpdateManager extends TDLManager {
+export default class UpdateManager extends Manager {
   /**
    * Create a new UpdatePlugin.
    * @param {TDLib.Rooms.Room} room - The room in which the layer manager operates.

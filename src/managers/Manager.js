@@ -22,7 +22,7 @@
  * @memberof TDLib.Plugins
  * @since 1.0.0
  */
-export default class TDLManager extends Phaser.Plugins.ScenePlugin {
+export default class Manager extends Phaser.Plugins.ScenePlugin {
   /**
    * Create a TDLRoomPlugin.
    * @param {TDLib.Rooms.Room|Phaser.Scene} room - The room which contains the plugin.

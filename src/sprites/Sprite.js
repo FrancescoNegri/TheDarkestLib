@@ -1,5 +1,5 @@
-import Behaviour from './behaviours';
-// import BehaviourComponent from '../components';
+import Behaviours from './behaviours';
+import Components from '../components';
 
 /**
  * The Darkest Lib.
@@ -48,17 +48,17 @@ export default class Sprite extends Phaser.Physics.Arcade.Sprite {
     texture,
     layer = null,
     hasBody = true,
-    behaviourType = Behaviour.INERT,
+    behaviourType = Behaviours.INERT,
     pixelPerfect = null,
-    observeText = Behaviour.DEFAULT_OBSERVE_TEXT,
-    examineOrInteractText = Behaviour.DEFAULT_EXAMINE_OR_INTERACT_TEXT,
+    observeText = Behaviours.DEFAULT_OBSERVE_TEXT,
+    examineOrInteractText = Behaviours.DEFAULT_EXAMINE_OR_INTERACT_TEXT,
     blockExamineText = null,
-    noLightObserveText = Behaviour.DEFAULT_NO_LIGHT_OBSERVE_TEXT,
-    noLightExamineOrInteractText = Behaviour.DEFAULT_NO_LIGHT_EXAMINE_OR_INTERACT_TEXT,
+    noLightObserveText = Behaviours.DEFAULT_NO_LIGHT_OBSERVE_TEXT,
+    noLightExamineOrInteractText = Behaviours.DEFAULT_NO_LIGHT_EXAMINE_OR_INTERACT_TEXT,
     examineOrInteractOffsetX = 0,
     examineOrInteractThresholdRadius = 0,
-    minLightLevelToExamineOrInteract = Behaviour.DEFAULT_MIN_LIGHT_LEVEL_TO_EXAMINE_OR_INTERACT,
-    minLightLevelToObserve = Behaviour.DEFAULT_MIN_LIGHT_LEVEL_TO_OBSERVE
+    minLightLevelToExamineOrInteract = Behaviours.DEFAULT_MIN_LIGHT_LEVEL_TO_EXAMINE_OR_INTERACT,
+    minLightLevelToObserve = Behaviours.DEFAULT_MIN_LIGHT_LEVEL_TO_OBSERVE
 
   ) {
     super(room, x, y, texture);
@@ -96,7 +96,7 @@ export default class Sprite extends Phaser.Physics.Arcade.Sprite {
      * @type {TDLib.Components.SpriteBehaviourComponent}
      * @since 1.0.0
      */
-    // this.behaviour = new BehaviourComponent(this, behaviourType, pixelPerfect);
+    this.behaviour = new Components.BehaviourComponent(this, behaviourType, pixelPerfect);
 
     /**
      * The text which appears when observing the sprite.
@@ -184,7 +184,7 @@ export default class Sprite extends Phaser.Physics.Arcade.Sprite {
    * @since 1.0.0
    */
   create() {
-    console.log('Created:', this.key, '- Type:', this.type, '- Behaviour:'); // , this.behaviour.type);
+    console.log('Created:', this.key, '- Type:', this.type, '- Behaviour:', this.behaviour.type);
   }
 
   /**

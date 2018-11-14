@@ -1,7 +1,7 @@
-import TDLManager from '../TDLManager';
+import Manager from '../Manager';
 import GlobalSettings from '../../boot/Settings';
 
-export default class LightSourceManager extends TDLManager {
+export default class LightSourceManager extends Manager {
   constructor(room, pluginManager) {
     super(room, pluginManager);
 

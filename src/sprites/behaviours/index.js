@@ -1,8 +1,13 @@
-const Behaviours = {
+import CONST from './const';
+
+var Behaviours = {
   Behaviour: require('./Behaviour'),
   Examinable: require('./examinable/Examinable'),
   Interactive: require('./interactive/Interactive'),
-  Observable: require('./observable/Observable')
+  Observable: require('./observable/Observable'),
+  Talkable: require('./talkable/Talkable'),
+  Inventory: require('./inventory/Inventory')
 };
 
+Behaviours = Phaser.Utils.Objects.Extend(false, Behaviours, CONST);
 module.exports = Behaviours;
