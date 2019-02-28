@@ -2,7 +2,7 @@ import Actions from '../../actions';
 import Behaviours from '../../sprites/behaviours';
 
 /**
- * Class representing the cursor manager, able to select always the correct graphic for the cursor and to handle pointer events.
+ * Class representing the CursorSystem, able to select the correct graphic for the cursor and to handle pointer events.
  * @extends Phaser.Plugins.BasePlugin
  * @memberof TDLib.Plugins.GlobalPlugins
  * @since 1.0.0

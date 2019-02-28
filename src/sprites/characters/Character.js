@@ -10,14 +10,14 @@ import CONST from '../../const';
  */
 
 /**
- * Class representing a TDLCharacter.
- * @extends TDLib.Sprites.TDLSprite
+ * Class representing a Character.
+ * @extends TDLib.Sprites.Sprite
  * @memberof TDLib.Sprites.Characters
  * @since 1.0.0
  */
 export default class Character extends Sprite {
   /**
-   * Create a new TDLCharacter.
+   * Create a new Character.
    * @param {Room} room - The room where the character is created.
    * @param {number} x - The x coordinate of the character.
    * @param {number} y - The y coordinate of the character.

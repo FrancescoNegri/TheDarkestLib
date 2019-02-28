@@ -1,8 +1,8 @@
 const Sprites = {
   Behaviours: require('./behaviours'),
   Characters: require('./characters'),
-  InventoryObjects: require('./inventory-objects'),
-  WorldObjects: require('./world-objects'),
+  InventoryItems: require('./inventory-items'),
+  WorldItems: require('./world-items'),
   Sprite: require('./Sprite')
 };
 

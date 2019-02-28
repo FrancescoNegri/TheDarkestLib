@@ -1,18 +1,12 @@
 import Behaviour from '../Behaviour';
 import Actions from '../../../actions';
+import Settings from './Settings';
 
 export default class Observable extends Behaviour {
   constructor(component) {
     super(component);
 
     this._timer;
-  }
-
-  /**
-  * E'il tempo minimo di mouse over necessario per far iniziare l'azione di osserva del player in secondi!
-  */
-  static get DEFAULT_MIN_TIME_TO_OBSERVE() {
-    return 1 * 1000;
   }
 
   add() {
@@ -22,7 +16,7 @@ export default class Observable extends Behaviour {
       this.cursors.setCursor(this.gameObject);
 
       this._timer = this.gameObject.room.time.addEvent({
-        delay: Observable.DEFAULT_MIN_TIME_TO_OBSERVE,
+        delay: Settings.DEFAULT_MIN_TIME_TO_OBSERVE,
         callback: () => {
           if (this.gameObject !== this.room.player && !this.room.player.isBlocked) this.room.player.actions.add(Actions.Observe, { target: this.gameObject });
         },
