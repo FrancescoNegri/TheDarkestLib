@@ -5,6 +5,7 @@ import CONST from './const';
 
 var TDLib = {
   Actions: require('./actions'),
+  Behaviours: require('./behaviours'),
   Components: require('./components'),
   Game: require('./boot/Game'),
   Managers: require('./managers'),

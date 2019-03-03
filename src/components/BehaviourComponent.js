@@ -1,5 +1,5 @@
 import Component from './Component';
-import Behaviours from '../sprites/behaviours';
+import Behaviours from '../behaviours';
 
 /**
  * The behaviours namespace.

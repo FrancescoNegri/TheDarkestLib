@@ -1,5 +1,5 @@
 import Behaviour from '../Behaviour';
-import Actions from '../../../actions';
+import Actions from '../../actions';
 import Settings from './Settings';
 
 export default class Observable extends Behaviour {

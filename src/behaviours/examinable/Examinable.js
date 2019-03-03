@@ -1,7 +1,7 @@
 import Behaviour from '../Behaviour';
-import Action from '../../../actions/Action';
+import Action from '../../actions/Action';
 
-export default class Interactive extends Behaviour {
+export default class Examinable extends Behaviour {
   constructor(component) {
     super(component);
   }

@@ -1,4 +1,4 @@
-import Action from '../../actions/Action';
+import Action from '../actions/Action';
 
 /**
  * Class representing the behaviour of a sprite.
