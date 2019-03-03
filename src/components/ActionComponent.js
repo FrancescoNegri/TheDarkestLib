@@ -1,5 +1,5 @@
 import Component from './Component';
-import Actions from '../actions';
+import Actions from '../sprites/actions';
 
 /**
  * The actions namespace.

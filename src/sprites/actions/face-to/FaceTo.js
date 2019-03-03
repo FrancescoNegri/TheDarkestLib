@@ -1,5 +1,5 @@
 import Action from '../Action';
-import CONST from '../../const';
+import CONST from '../../../const';
 import Settings from './Settings';
 
 export default class FaceTo extends Action {

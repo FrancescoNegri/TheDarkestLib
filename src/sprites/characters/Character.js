@@ -1,5 +1,5 @@
 import Sprite from '../Sprite';
-import Behaviour from '../../behaviours';
+import Behaviour from '../behaviours';
 import Components from '../../components';
 import CONST from '../../const';
 

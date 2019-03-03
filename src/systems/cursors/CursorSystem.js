@@ -1,5 +1,5 @@
-import Actions from '../../actions';
-import Behaviours from '../../behaviours';
+import Actions from '../../sprites/actions';
+import Behaviours from '../../sprites/behaviours';
 
 /**
  * Class representing the CursorSystem, able to select the correct graphic for the cursor and to handle pointer events.

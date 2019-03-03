@@ -1,5 +1,5 @@
 import WorldItem from '../WorldItem';
-import Behaviours from '../../../behaviours';
+import Behaviours from '../../behaviours';
 
 export default class LightSource extends WorldItem {
   /**

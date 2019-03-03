@@ -1,4 +1,4 @@
-import Behaviours from '../behaviours';
+import Behaviours from '../sprites/behaviours';
 import Components from '../components';
 
 /**
