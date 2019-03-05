@@ -17,7 +17,7 @@ if (env === 'build') {
   outputFile = libraryName + '.js';
 }
 
-const config = {
+const internalLibConfig = {
   mode: mode,
   entry: __dirname + '/src/TDLib.js',
   devtool: 'source-map',
@@ -51,7 +51,7 @@ const config = {
   }
 };
 
-const configB = {
+const externalLibConfig = {
   mode: mode,
   entry: __dirname + '/src/TDLib.js',
   devtool: 'source-map',
@@ -85,4 +85,4 @@ const configB = {
   }
 };
 
-module.exports = [config, configB];
+module.exports = [internalLibConfig, externalLibConfig];
