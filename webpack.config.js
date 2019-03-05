@@ -51,4 +51,38 @@ const config = {
   }
 };
 
-module.exports = config;
+const configB = {
+  mode: mode,
+  entry: __dirname + '/src/TDLib.js',
+  devtool: 'source-map',
+  output: {
+    path: path.resolve('../TheDarkestLight/www/lib'),
+    filename: outputFile,
+    library: 'TDLib',
+    libraryTarget: 'umd',
+    umdNamedDefine: true
+  },
+  module: {
+    rules: [
+      {
+        test: /(\.jsx|\.js)$/,
+        loader: 'babel-loader',
+        exclude: /(node_modules|bower_components)/
+      },
+      {
+        test: /(\.jsx|\.js)$/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/
+      }
+    ]
+  },
+  resolve: {
+    modules: [path.resolve('./node_modules'), path.resolve('./src')],
+    extensions: ['.json', '.js']
+  },
+  externals: {
+    phaser: 'phaser'
+  }
+};
+
+module.exports = [config, configB];

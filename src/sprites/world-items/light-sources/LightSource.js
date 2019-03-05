@@ -1,5 +1,6 @@
 import WorldItem from '../WorldItem';
 import Behaviours from '../../behaviours';
+import EffectComponent from '../../../components/EffectComponent';
 
 export default class LightSource extends WorldItem {
   /**
@@ -41,7 +42,8 @@ export default class LightSource extends WorldItem {
 
     // Register this LightSource instance to the Room's LightManager
     this.room.lightSources.add(this);
-    this.lightBehaviour = new LightSourceBehaviourComponent(this, allowedBehaviours);
+    // this.lightBehaviour = new LightSourceBehaviourComponent(this, allowedBehaviours);
+    this.effects = new EffectComponent(this);
   }
 
   /**
@@ -69,7 +71,7 @@ export default class LightSource extends WorldItem {
      */
   turnOff(stopBehaviours = true) {
 
-    if (stopBehaviours) this.lightBehaviour.stopAllBehaviours();
+    // if (stopBehaviours) this.lightBehaviour.stopAllBehaviours();
     if (this.isOn) {
       let diffusedLightindex = this.room.lightSources.diffusedLights.indexOf(this.diffusedLight);
 

@@ -1,5 +1,5 @@
 import Behaviours from '../sprites/behaviours';
-import Components from '../components';
+import BehaviourComponent from '../components/BehaviourComponent';
 
 /**
  * The Darkest Lib.
@@ -96,7 +96,7 @@ export default class Sprite extends Phaser.Physics.Arcade.Sprite {
      * @type {TDLib.Components.SpriteBehaviourComponent}
      * @since 1.0.0
      */
-    this.behaviour = new Components.BehaviourComponent(this, behaviourType, pixelPerfect);
+    this.behaviour = new BehaviourComponent(this, behaviourType, pixelPerfect);
 
     /**
      * The text which appears when observing the sprite.
