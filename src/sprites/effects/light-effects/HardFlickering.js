@@ -33,7 +33,7 @@ export default class HardFlickering extends LightEffect {
         });
       };
 
-      setTimer(this);
+      setTimer();
     });
   }
 
