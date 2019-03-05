@@ -42,7 +42,6 @@ export default class LightSource extends WorldItem {
 
     // Register this LightSource instance to the Room's LightManager
     this.room.lightSources.add(this);
-    // this.lightBehaviour = new LightSourceBehaviourComponent(this, allowedBehaviours);
     this.effects = new EffectComponent(this);
   }
 
