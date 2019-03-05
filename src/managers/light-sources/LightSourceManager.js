@@ -30,10 +30,10 @@ export default class LightSourceManager extends Manager {
       if (light.isOn) {
         let singleLightContribute = light.config.diffusedLight.intensity / (Math.abs(light.x + light.config.offset.x - target.x) ^ 2);
 
-        /*
-        if (light.lightBehaviour.runningBehaviour !== null) {
-          singleLightContribute *= light.lightBehaviour.runningBehaviour.behaviourLightContributeFactor;
-        }*/
+        // COSE
+        if (light.effects.currentEffect) {
+          singleLightContribute *= light.effects.currentEffect.contributeFactor;
+        }
 
         singleLightContributeAccumulator += singleLightContribute;
       }

@@ -1,8 +1,8 @@
-import Effect from '../Effect';
+import LightEffect from './LightEffect';
 
-export default class HardFlickering extends Effect {
+export default class HardFlickering extends LightEffect {
   constructor(invoker, config) {
-    super(invoker, config);
+    super(invoker, config, 0.5);
 
     if (!this.config.minTime) this.config.minTime = 10;
     if (!this.config.maxTime) this.config.maxTime = 400;
@@ -11,7 +11,6 @@ export default class HardFlickering extends Effect {
 
   play() {
     super.play(() => {
-      this.stopped = false;
       let setTimer = () => {
         this.gameObject.room.time.addEvent({
           delay: Math.floor(Math.random() * (this.config.maxTime - this.config.minTime)) + this.config.minTime,
@@ -40,8 +39,6 @@ export default class HardFlickering extends Effect {
 
   stop() {
     super.stop(() => {
-      this.stopped = true;
-      console.log(this);
       if (this.config.finalState === 'on') {
         if (this.gameObject.initialConfig.graphicLight !== null) {
           this.gameObject.graphicLight.setIntensity(this.gameObject.initialConfig.graphicLight.intensity);
