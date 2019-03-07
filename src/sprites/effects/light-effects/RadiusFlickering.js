@@ -1,8 +1,8 @@
 import LightEffect from './LightEffect';
 
-export default class Trembling extends LightEffect {
+export default class RadiusFlickering extends LightEffect {
   constructor(invoker, config) {
-    super(invoker, config, 0.8);
+    super(invoker, config, 0.9);
 
     if (!this.config.minTime) this.config.minTime = 10;
     if (!this.config.maxTime) this.config.maxTime = 100;
@@ -16,11 +16,10 @@ export default class Trembling extends LightEffect {
 
   play() {
     super.play(() => {
-      let setTimer = () => {
+      var setTimer = () => {
         this.gameObject.room.time.addEvent({
           delay: Math.floor(Math.random() * (this.config.maxTime - this.config.minTime)) + this.config.minTime,
           callback: () => {
-
             if (!this.stopped) {
               let newIntensityPercentage = Math.floor((this.config.minPercentageIntensity + Math.random() * (this.config.maxPercentageIntensity - this.config.minPercentageIntensity)) * 100 + 1) / 100;
 

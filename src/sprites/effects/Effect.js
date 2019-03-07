@@ -15,14 +15,12 @@ export default class Effect {
   play(callback = () => { }) {
     if (this.invoker instanceof EffectComponent) {
       callback();
-      console.log(this.name + 'Effect started');
     } else console.log('Effects can only be played by the EffectComponent');
   }
 
   stop(callback = () => { }) {
     if (this.invoker instanceof EffectComponent) {
       callback();
-      console.log(this.name + 'Effect stopped');
     } else console.log('Effects can only be stopped by the EffectComponent');
   }
 }

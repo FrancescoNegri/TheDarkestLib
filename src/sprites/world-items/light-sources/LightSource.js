@@ -19,10 +19,9 @@ export default class LightSource extends WorldItem {
    * @param {Object} offset - Offset of the graphic light respect the center of the sprite.
    * @param {number} offset.x - X offset.
    * @param {number} offset.y - Y offset.
-   * @param {Array} allowedBehaviours - List of names of the allowed Behaviour for this light
    * @param {boolean} [isOn=true] - Light created as switched on or off.
    */
-  constructor(room, x, y, texture, layer, graphicLightConfig, diffusedLightConfig, offset, allowedBehaviours, isOn = true) {
+  constructor(room, x, y, texture, layer, graphicLightConfig, diffusedLightConfig, offset, isOn = true) {
     super(room, x, y, texture, layer, true, Behaviours.EXAMINABLE);
 
     this.setGravityY(0);

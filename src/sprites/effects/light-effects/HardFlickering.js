@@ -25,7 +25,7 @@ export default class HardFlickering extends LightEffect {
                 if (this.gameObject.diffusedLight.intensity === 0) this.gameObject.diffusedLight.setIntensity(this.gameObject.initialConfig.diffusedLight.intensity);
                 else this.gameObject.diffusedLight.setIntensity(0);
               }
-              setTimer(this);
+              setTimer();
             }
           },
           callbackScope: this,

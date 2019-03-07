@@ -11,7 +11,7 @@ export default class EffectComponent extends Component {
     this.currentEffect = null;
   }
 
-  play(key, config) {
+  play(key, duration = -1, config) {
     if (this.currentEffect) this.stop();
 
     if (key in Effects) this.currentEffect = new Effects[key](this, config);
@@ -23,12 +23,33 @@ export default class EffectComponent extends Component {
     }
 
     if (this.currentEffect) this.currentEffect.play();
+
+    if (duration > 0) {
+      this.timer = this.gameObject.room.time.addEvent({
+        delay: duration,
+        callback: () => {
+          this.stop();
+        },
+        callbackScope: this,
+        repeat: 0
+      });
+      console.log(this.currentEffect.name + 'Effect started for', duration, 'ms');
+    } else if (duration === -1) {
+      console.log(this.currentEffect.name + 'Effect started');
+    } else {
+      console.log('You must use a positive value!');
+    }
   }
 
   stop() {
     if (this.currentEffect) {
+      if (this.timer) {
+        this.timer.remove();
+        this.timer = null;
+      }
       this.previousEffects.push(this.currentEffect);
       this.currentEffect.stop();
+      console.log(this.currentEffect.name + 'Effect stopped');
       this.currentEffect = null;
       console.log(this.previousEffects);
     }
