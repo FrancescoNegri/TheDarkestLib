@@ -34,3 +34,6 @@ node_modules
 
 #Lib Output Folder
 lib
+
+#JSDoc
+docs

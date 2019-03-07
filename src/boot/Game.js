@@ -54,7 +54,6 @@ export default class Game {
         { key: 'UpdateManager', plugin: Managers.UpdateManager, mapping: 'updates' },
         { key: 'LightSourceManager', plugin: Managers.LightSourceManager, mapping: 'lightSources' },
         { key: 'LayerManager', plugin: Managers.LayerManager, mapping: 'layers' }
-        // { key: 'ActionManager', plugin: ActionManager, mapping: 'actions' }
       ]
     };
   }
