@@ -7,7 +7,7 @@ export default class Interact extends Action {
     this.addActions(
       [
         new WalkTo(this, this.actor, this.config),
-        this.target.behaviour.interact.getAction(this)
+        this.target.behaviours.interact.getAction(this)
       ]
     );
   }

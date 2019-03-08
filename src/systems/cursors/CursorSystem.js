@@ -168,13 +168,13 @@ export default class CursorSystem extends Phaser.Plugins.BasePlugin {
           break;
 
         case CursorSystem.EXAMINABLE_CURSOR: {
-          this.lastTarget.behaviour.observe.abort();
+          this.lastTarget.behaviours.observe.abort();
           player.actions.add(Actions.Examine, { target: this.lastTarget });
         }
           break;
 
         case CursorSystem.INTERACTIVE_CURSOR: {
-          this.lastTarget.behaviour.observe.abort();
+          this.lastTarget.behaviours.observe.abort();
           player.actions.add(Actions.Interact, { target: this.lastTarget });
         }
           break;
@@ -190,13 +190,13 @@ export default class CursorSystem extends Phaser.Plugins.BasePlugin {
   /**
    * Set the correct cursor for the target selected.
    * @param {Object} target - The target of the pointer.sceneManager
-   * @param {TDLib.Components.ActionComponent} target.behaviour - The SpriteBehaviourComponent of the target.
-   * @param {string} [target.behaviour.type=TDLib.Sprites.Behaviours.INERT] - The type of the sprite behaviour for this target.
+   * @param {TDLib.Components.ActionComponent} target.behaviours - The SpriteBehaviourComponent of the target.
+   * @param {string} [target.behaviours.type=TDLib.Sprites.Behaviours.INERT] - The type of the sprite behaviour for this target.
    * @since 1.0.0
    */
-  setCursor(target = { behaviour: { type: Behaviours.INERT }, room: {} }) {
+  setCursor(target = { behaviours: { type: Behaviours.INERT }, room: {} }) {
     if ('room' in target && target !== target.room.player) {
-      switch (target.behaviour.type) {
+      switch (target.behaviours.type) {
         case Behaviours.INERT: {
           this.cursorScene.cursor.setTexture(CursorSystem.DEFAULT_CURSOR).setOrigin(0.4, 0.33);
         }

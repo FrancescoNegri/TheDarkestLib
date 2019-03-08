@@ -7,7 +7,7 @@ export default class Examine extends Action {
     this.addActions(
       [
         new WalkTo(this, this.actor, this.config),
-        this.target.behaviour.examine.getAction(this)
+        this.target.behaviours.examine.getAction(this)
       ]
     );
   }

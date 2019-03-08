@@ -96,7 +96,7 @@ export default class Sprite extends Phaser.Physics.Arcade.Sprite {
      * @type {TDLib.Components.SpriteBehaviourComponent}
      * @since 1.0.0
      */
-    this.behaviour = new BehaviourComponent(this, behaviourType, pixelPerfect);
+    this.behaviours = new BehaviourComponent(this, behaviourType, pixelPerfect);
 
     /**
      * The text which appears when observing the sprite.
@@ -184,7 +184,7 @@ export default class Sprite extends Phaser.Physics.Arcade.Sprite {
    * @since 1.0.0
    */
   create() {
-    console.log('Created:', this.key, '- Type:', this.type, '- Behaviour:', this.behaviour.type);
+    console.log('Created:', this.key, '- Type:', this.type, '- Behaviour:', this.behaviours.type);
   }
 
   /**
