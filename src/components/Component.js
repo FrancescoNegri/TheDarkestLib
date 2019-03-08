@@ -1,28 +1,38 @@
 /**
- * The namespace of components.
- * @namespace TDLib.Components
+ * @author       Francesco Negri <francesco.negri@outlook.com>
+ * @copyright    2019 The Darkest Light
+ * @license      {@link https://github.com/FrancescoNegri/TheDarkestLib/blob/master/LICENSE|MIT License}
  */
 
 /**
- * Class representing a generic TDLComponent. A TDLComponent extends the members and methods of a TDLSprite which uses it.
+ * @classdesc
+ * Class representing a generic Component.
+ * A Component is bound to a Sprite and extends the members and methods of it.
+ * To access the component you have to use a specific key.
+ *
+ * @class Component
  * @memberof TDLib.Components
+ * @constructor
+ * @since 1.0.0
+ *
+ * @param {TDLib.Sprites.Sprite} gameObject - The Sprite using the Component.
  */
 export default class Component {
-  /**
-   * Creates a new TDLComponent.
-   * @param {TDLib.Sprites.TDLSprite} gameObject - The TDLSprite which owns the component.
-   */
   constructor(gameObject) {
 
     /**
-     * The name of the component.
+     * The name of the Component.
      * @type {string}
+     * @name TDLib.Components.Component#name
+     * @since 1.0.0
      */
     this.name = this.constructor.name;
 
     /**
-     * The TDLSprite which owns the component.
-     * @type {TDLib.Sprites.TDLSprite}
+     * The Sprite using the Component.
+     * @type {TDLib.Sprites.Sprite}
+     * @name TDLib.Components.Component#gameObject
+     * @since 1.0.0
      */
     this.gameObject = gameObject;
   }

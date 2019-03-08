@@ -16,6 +16,7 @@ const Utils = {
   },
   findFileNameFromPath: (path) => {
     let nameFirstCharachterPosition = path.lastIndexOf('/') + 1;
+
     let nameLastCharachterPosition = path.lastIndexOf('.');
 
     if (nameFirstCharachterPosition === -1) nameFirstCharachterPosition = 0;

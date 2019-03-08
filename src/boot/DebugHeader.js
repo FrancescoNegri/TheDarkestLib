@@ -1,3 +1,9 @@
+/**
+ * @author       Francesco Negri <francesco.negri@outlook.com>
+ * @copyright    2019 The Darkest Light
+ * @license      {@link https://github.com/FrancescoNegri/TheDarkestLib/blob/master/LICENSE|MIT License}
+ */
+
 var CONST = require('../const');
 var Settings = require('./Settings');
 
@@ -6,10 +12,10 @@ var Settings = require('./Settings');
  *
  * You can customize or disable the header via the Game Config object.
  *
- * @function Phaser.Boot.DebugHeader
- * @since 3.0.0
+ * @function TDLib.Boot.DebugHeader
+ * @since 1.0.0
  *
- * @param {Phaser.Game} game - The Phaser.Game instance which will output this debug header.
+ * @param {TDLib.Game} game - The TDLib.Game instance which will output this debug header.
  */
 var DebugHeader = function (game) {
   let config = game.config;
@@ -25,6 +31,7 @@ var DebugHeader = function (game) {
   }
 
   let audioConfig = config.audio;
+
   let deviceAudio = game.device.audio;
 
   let audioType;
@@ -39,6 +46,7 @@ var DebugHeader = function (game) {
 
   if (!game.device.browser.ie) {
     let c = '';
+
     let args = [c];
 
     if (Array.isArray(config.bannerBackgroundColor)) {
