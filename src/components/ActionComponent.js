@@ -19,7 +19,6 @@ import Actions from '../sprites/actions';
  *
  * @param {TDLib.Sprites.Sprite} gameObject - The performer of the action.
  */
-
 export default class ActionComponent extends Component {
   constructor(gameObject) {
     super(gameObject);
@@ -80,7 +79,7 @@ export default class ActionComponent extends Component {
   }
 
   /**
-   * Start a new action or add that to the queue.
+   * Starts a new action or add that to the queue.
    *
    * @method TDLib.Components.ActionComponent#add
    * @param {TDLib.Components.Sprites.Actions.Action} action - The action to add or execute.
