@@ -82,8 +82,8 @@ export default class ActionComponent extends Component {
   /**
    * Start a new action or add that to the queue.
    *
-   * @method TDLib.Component.ActionComponent#add
-   * @param {TDLib.Components.Actions.Action} action - The action to add or execute.
+   * @method TDLib.Components.ActionComponent#add
+   * @param {TDLib.Components.Sprites.Actions.Action} action - The action to add or execute.
    * @param {Object} config - The config object for the action.
    * @param {Object} config.target - The target of the action.
    * @param {number} config.target.x - The x of the target of the action.
@@ -122,7 +122,7 @@ export default class ActionComponent extends Component {
   /**
    * Remove a completed action from the queue.
    *
-   * @method TDLib.Component.ActionComponent#_remove
+   * @method TDLib.Components.ActionComponent#_remove
    * @protected
    * @since 1.0.0
    */
@@ -136,7 +136,7 @@ export default class ActionComponent extends Component {
   /**
    * Update the currently performed action.
    *
-   * @method TDLib.Component.ActionComponent#_update
+   * @method TDLib.Components.ActionComponent#_update
    * @protected
    * @since 1.0.0
    */
