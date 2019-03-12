@@ -263,7 +263,7 @@ export default class Room extends Phaser.Scene {
     // Updates all Actions in  every ActionComponent (if present)
     this.children.list.forEach(element => {
       if ('actions' in element) {
-        element.actions.update();
+        element.actions._update();
       }
     });
   }

@@ -103,30 +103,30 @@ export default class Action {
         this.isPaused = false;
       }
 
-      start() {
+      _start() {
         this.startCallback();
       }
 
       finish() {
         this.finishCallback();
-        this.invoker.remove();
+        this.invoker._remove();
       }
 
-      abort() {
+      _abort() {
         this.finishCallback();
       }
 
-      resume() {
+      _resume() {
         this.isPaused = false;
         this.resumeCallback();
       }
 
-      pause() {
+      _pause() {
         this.pauseCallback();
         this.isPaused = true;
       }
 
-      update() {
+      _update() {
         this.updateCallback();
       }
     };
@@ -137,8 +137,8 @@ export default class Action {
    * @private
    * @since 1.0.0
    */
-  abort() {
-    if (this._queue.length > 0) this._queue[0].abort();
+  _abort() {
+    if (this._queue.length > 0) this._queue[0]._abort();
   }
 
   /**
@@ -146,8 +146,8 @@ export default class Action {
    * @private
    * @since 1.0.0
    */
-  start() {
-    if (this._queue.length > 0) this._queue[0].start();
+  _start() {
+    if (this._queue.length > 0) this._queue[0]._start();
   }
 
   /**
@@ -164,11 +164,11 @@ export default class Action {
    * @private
    * @since 1.0.0
    */
-  remove() {
+  _remove() {
     if (this._queue.length > 0) this._queue.shift();
 
-    if (this._queue.length <= 0) this.invoker.remove();
-    else this._queue[0].start();
+    if (this._queue.length <= 0) this.invoker._remove();
+    else this._queue[0]._start();
   }
 
   /**
@@ -176,9 +176,9 @@ export default class Action {
    * @private
    * @since 1.0.0
    */
-  pause() {
+  _pause() {
     if (this._queue.length > 0) {
-      this._queue[0].pause();
+      this._queue[0]._pause();
       this.isPaused = true;
     }
   }
@@ -188,10 +188,10 @@ export default class Action {
    * @private
    * @since 1.0.0
    */
-  resume() {
+  _resume() {
     if (this._queue.length > 0) {
       this.isPaused = false;
-      this._queue[0].resume();
+      this._queue[0]._resume();
     }
   }
 
@@ -200,7 +200,7 @@ export default class Action {
    * @private
    * @since 1.0.0
    */
-  update() {
-    if (this._queue.length > 0) this._queue[0].update();
+  _update() {
+    if (this._queue.length > 0) this._queue[0]._update();
   }
 }
