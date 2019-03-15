@@ -10,6 +10,7 @@ export default class LightSourceManager extends Manager {
   }
 
   boot() {
+    super.boot();
     this.lightSources = this.room.add.group();
   }
 

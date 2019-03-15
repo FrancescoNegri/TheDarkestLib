@@ -21,6 +21,7 @@ export default class UpdateManager extends Manager {
    * @since 1.0.0
    */
   boot() {
+    super.boot();
     const events = this.systems.events;
 
     this.gameObjects = new Phaser.Structs.Set();

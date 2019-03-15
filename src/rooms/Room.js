@@ -13,6 +13,7 @@ import Utils from './Utils';
  * @memberof TDLib.Rooms
  * @since 1.0.0
  */
+// eslint-disable-next-line no-undef
 export default class Room extends Phaser.Scene {
   /**
    * Create a new TDLRoom.
@@ -218,6 +219,7 @@ export default class Room extends Phaser.Scene {
     this.map.objects.forEach(layer => {
       layer.objects.forEach(element => {
         _this;
+        // eslint-disable-next-line no-eval
         this[element.name] = eval('new ' + element.type + '(_this,' + (element.x + element.width / 2) + ', ' + (element.y - element.height / 2) + ');');
         this[element.name].setName(element.name);
       });

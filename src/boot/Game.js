@@ -101,10 +101,12 @@ export default class Game {
    */
   _setPlugins() {
     this.config.plugins = {
+      // Systems
       global: [
         { key: 'RoomSystem', plugin: Systems.RoomSystem, start: false, mapping: 'rooms' },
         { key: 'CursorSystem', plugin: Systems.CursorSystem, start: false, mapping: 'cursors' }
       ],
+      // Managers
       scene: [
         { key: 'UpdateManager', plugin: Managers.UpdateManager, mapping: 'updates' },
         { key: 'LightSourceManager', plugin: Managers.LightSourceManager, mapping: 'lightSources' },

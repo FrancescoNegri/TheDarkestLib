@@ -1,134 +1,159 @@
+/**
+ * @author       Francesco Negri <francesco.negri@outlook.com>
+ * @copyright    2019 The Darkest Light
+ * @license      {@link https://github.com/FrancescoNegri/TheDarkestLib/blob/master/LICENSE|MIT License}
+ */
+
 import Manager from '../Manager';
 import Settings from './Settings';
 
 /**
- * Class representing the manager of the layers in every room.
- * @extends TDLib.Plugins.TDLRoomPlugin
- * @memberof TDLib.Plugins.RoomPlugins
+ * @classdesc
+ * Class representing a LayerManager, responsible to manage
+ * the layers order, in order to have all the elements rendered correctly.
+ * Layers are Phaser.GameObjects.Group.
+ *
+ * @class LayerManager
+ * @extends TDLib.Managers.Manager
+ * @memberof TDLib.Managers
+ * @constructor
  * @since 1.0.0
+ *
+ * @param {TDLib.Rooms.Room|Phaser.Scene} room - The room running the Manager.
+ * @param {Phaser.Plugins.PluginManager} - A reference to Phaser PluginManager.
  */
 export default class LayerManager extends Manager {
-  /**
-   * Create a new RoomManager.
-   * @param {TDLib.Rooms.Room} room - The room in which the layer manager operates.
-   * @param {Phaser.Plugins.PluginManager} pluginManager - A reference to the plugin manager.
-   */
   constructor(room, pluginManager) {
     super(room, pluginManager);
     /**
-     * The size in cells of each layer.
+     * The size in cells of each Layer.
      * @type {number}
+     * @name TDLib.Managers.LayerManager#layerSize
      * @since 1.0.0
      */
     this.layerSize = Settings.layerSize;
 
     /**
-     * The starting depth of layers.
+     * The starting depth of Layers.
      * @type {number}
+     * @name TDLib.Managers.LayerManager#startingDepth
      * @since 1.0.0
      */
     this.strartingDepth = Settings.startingDepth;
   }
 
   /**
-   * Boot all the layers in the correct order.
-   * @since 1.0.0
+   * @lends TDLib.Managers.Manager.boot
    */
   boot() {
+    super.boot();
     /**
-     * The layer containing the background wall.
+     * The Layer containing the background wall.
      * @type {Phaser.GameObjects.Group}
+     * @name TDLib.Managers.LayerManager#backgroundLayer
      * @since 1.0.0
      */
     this.backgroundLayer = this.room.add.group();
 
     /**
-     * The layer containing the rear doors.
+     * The Layer containing the rear doors.
      * @type {Phaser.GameObjects.Group}
+     * @name TDLib.Managers.LayerManager#rearDoorsLayer
      * @since 1.0.0
      */
     this.rearDoorsLayer = this.room.add.group();
 
     /**
-     * The layer containing the objects fixed to the background wall.
+     * The Layer containing the objects fixed to the background wall.
      * @type {Phaser.GameObjects.Group}
+     * @name TDLib.Managers.LayerManager#wallFurnitureLayer
      * @since 1.0.0
      */
     this.wallFurnitureLayer = this.room.add.group();
 
     /**
-     * The layer containing the objects in the room.
+     * The Layer containing the objects in the room.
      * @type {Phaser.GameObjects.Group}
+     * @name TDLib.Managers.LayerManager#roomFurnitureLayer
      * @since 1.0.0
      */
     this.roomFurnitureLayer = this.room.add.group();
 
     /**
-     * The layer containing the side doors.
+     * The Layer containing the side doors.
      * @type {Phaser.GameObjects.Group}
+     * @name TDLib.Managers.LayerManager#sideDoorsLayer
      * @since 1.0.0
      */
     this.sideDoorsLayer = this.room.add.group();
 
     /**
-     * The layer containing the NPCs.
+     * The Layer containing the NPCs.
      * @type {Phaser.GameObjects.Group}
+     * @name TDLib.Managers.LayerManager#playerLayer
      * @since 1.0.0
      */
     this.npcLayer = this.room.add.group();
 
     /**
-     * The layer containing the player.
+     * The Layer containing the Player.
      * @type {Phaser.GameObjects.Group}
      * @since 1.0.0
      */
     this.playerLayer = this.room.add.group();
 
     /**
-     * The layer containing the cieling objects from the roof.
+     * The Layer containing the cieling objects from the roof.
      * @type {Phaser.GameObjects.Group}
+     * @name TDLib.Managers.LayerManager#cielingObjectsLayer
      * @since 1.0.0
      */
     this.cielingObjectsLayer = this.room.add.group();
 
     /**
-     * The layer containing the front doors.
+     * The Layer containing the front doors.
      * @type {Phaser.GameObjects.Group}
+     * @name TDLib.Managers.LayerManager#frontDoorsLayer
      * @since 1.0.0
      */
     this.frontDoorsLayer = this.room.add.group();
 
     /**
-     * The layer containing the lateral walls.
+     * The Layer containing the lateral walls.
      * @type {Phaser.GameObjects.Group}
+     * @name TDLib.Managers.LayerManager#wallsLayer
      * @since 1.0.0
      */
     this.wallsLayer = this.room.add.group();
 
     /**
-     * The layer containing the lateral walls black mask.
+     * The Layer containing the lateral walls black mask.
      * @type {Phaser.GameObjects.Group}
+     * @name TDLib.Managers.LayerManager#wallsMaskLayer
      * @since 1.0.0
      */
     this.wallsMaskLayer = this.room.add.group();
 
     /**
-     * The layer containing the overall darkness mask.
+     * The Layer containing the overall darkness mask.
      * @type {Phaser.GameObjects.Group}
+     * @name TDLib.Managers.LayerManager#overallDarknessLayer
      * @since 1.0.0
      */
     this.overallDarknessLayer = this.room.add.group();
 
     /**
-     * The layer containing the border black masks.
+     * The Layer containing the border black masks.
      * @type {Phaser.GameObjects.Group}
+     * @name TDLib.Managers.LayerManager#borderMasksLayer
      * @since 1.0.0
      */
     this.borderMasksLayer = this.room.add.group();
   }
 
   /**
-   * Set the correct depth for each layer in the right order.
+   * Set the correct depth for each Layer in the right order.
+   * @method TDLib.Managers.LayerManager#setLayersDepth
    * @since 1.0.0
    */
   setLayersDepth() {
