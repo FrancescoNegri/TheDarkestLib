@@ -105,7 +105,9 @@ var Settings = {
    * @type {String}
    * @since 1.0.0
    */
-  DEVICE: 'Desktop'
+  DEVICE: 'Desktop',
+  STARTING_ROOM: null,
+  GAME_SPRITES: null
 };
 
 module.exports = Settings;

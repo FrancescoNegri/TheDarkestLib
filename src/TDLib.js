@@ -5,6 +5,7 @@
  */
 
 import CONST from './const';
+import Phaser from 'phaser';
 
 /**
  * @namespace TDLib
@@ -22,7 +23,6 @@ var TDLib = {
 };
 
 // Merge the consts
-// eslint-disable-next-line no-undef
 TDLib = Phaser.Utils.Objects.Extend(false, TDLib, CONST);
 
 // Export the module

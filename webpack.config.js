@@ -1,6 +1,5 @@
 /* global __dirname, require, module*/
 
-const webpack = require('webpack');
 const path = require('path');
 const env = require('yargs').argv.env; // use --env with webpack 2
 const pkg = require('./package.json');
@@ -56,7 +55,7 @@ const externalLibConfig = {
   entry: __dirname + '/src/TDLib.js',
   devtool: 'source-map',
   output: {
-    path: path.resolve('../TheDarkestLight/www/lib'),
+    path: path.resolve('../TheDarkestTest/lib'),
     filename: outputFile,
     library: 'TDLib',
     libraryTarget: 'umd',

@@ -10,6 +10,8 @@
  * @ignore
  */
 
+import Phaser from 'phaser';
+
 const CONST = {
   /**
    * TheDarkestLib Release Version.
