@@ -55,7 +55,7 @@ const externalLibConfig = {
   entry: __dirname + '/src/TDLib.js',
   devtool: 'source-map',
   output: {
-    path: path.resolve('../TheDarkestTest/lib'),
+    path: path.resolve('../TheDarkestLight/lib'),
     filename: outputFile,
     library: 'TDLib',
     libraryTarget: 'umd',

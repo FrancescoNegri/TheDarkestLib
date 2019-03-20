@@ -49,7 +49,7 @@ export default class Game {
     this._finalizeConfig();
 
     /** ************ TODO: Aggiungere il device e la funzione per determinarlo **************/
-    Settings.STARTING_ROOM = this.config.starting_room;
+    Settings.STARTING_ROOM = this.config.startingRoom;
     Settings.GAME_SPRITES = this._setGameSprites(Phaser.Utils.Objects.Clone(this.config.sprites));
     console.log(this.config.sprites, Settings.GAME_SPRITES);
     Settings.GAME = new Phaser.Game(this.config);
@@ -127,7 +127,7 @@ export default class Game {
    * @since 1.0.0
    */
   _setBoot() {
-    this.config.scene = [Boot]; /** ****** TODO: Valutare come spostare il Boot dentro alla libreria*******/
+    this.config.scene = [Boot];
   }
 
   /**
