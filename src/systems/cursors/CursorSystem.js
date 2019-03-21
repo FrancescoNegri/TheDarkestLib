@@ -1,5 +1,6 @@
 import Actions from '../../sprites/actions';
 import Behaviours from '../../sprites/behaviours';
+import Phaser from 'phaser';
 
 /**
  * Class representing the CursorSystem, able to select the correct graphic for the cursor and to handle pointer events.

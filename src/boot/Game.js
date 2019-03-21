@@ -145,7 +145,6 @@ export default class Game {
     function haveChildObject(father) {
       let flag = false;
 
-      // eslint-disable-next-line eqeqeq
       if (Object.keys(filterObj(obj, (key, value) => (
         // eslint-disable-next-line eqeqeq
         typeof value == 'object' &&
@@ -191,7 +190,6 @@ export default class Game {
    * @since 1.0.0
    */
   _finalizeConfig() {
-    // eslint-disable-next-line no-undef
     this.config.type = Phaser.WEBGL;
     this.config.maxLights = 20;
     this.config.parent = 'game';

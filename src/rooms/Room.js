@@ -1,5 +1,6 @@
 import Settings from '../boot/Settings';
 import Utils from './Utils';
+import Phaser from 'phaser';
 
 /**
  * The rooms namespace.
@@ -13,7 +14,6 @@ import Utils from './Utils';
  * @memberof TDLib.Rooms
  * @since 1.0.0
  */
-// eslint-disable-next-line no-undef
 export default class Room extends Phaser.Scene {
   /**
    * Create a new TDLRoom.

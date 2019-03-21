@@ -30,7 +30,6 @@ const CONST = {
    * @type {string}
    * @since 1.0.0
    */
-  // eslint-disable-next-line no-undef
   PHASER_VERSION: Phaser.VERSION,
   /**
    * Left direction constant.

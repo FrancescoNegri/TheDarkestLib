@@ -1,5 +1,6 @@
 import Behaviours from '../sprites/behaviours';
 import BehaviourComponent from '../components/BehaviourComponent';
+import Phaser from 'phaser';
 
 /**
  * The Darkest Lib.

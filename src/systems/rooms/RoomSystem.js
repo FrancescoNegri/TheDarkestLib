@@ -1,3 +1,5 @@
+import Phaser from 'phaser';
+
 /**
  * Class representing the manager of the rooms
  * @extends Phaser.Plugins.BasePlugin

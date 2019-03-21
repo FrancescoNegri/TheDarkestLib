@@ -4,6 +4,8 @@
  * @license      {@link https://github.com/FrancescoNegri/TheDarkestLib/blob/master/LICENSE|MIT License}
  */
 
+import Phaser from 'phaser';
+
 /**
  * @classdesc
  * Class representing a generic Manager.
@@ -21,7 +23,6 @@
  * @param {TDLib.Rooms.Room|Phaser.Scene} room - The room running the Manager.
  * @param {Phaser.Plugins.PluginManager} - A reference to Phaser PluginManager.
  */
-// eslint-disable-next-line no-undef
 export default class Manager extends Phaser.Plugins.ScenePlugin {
   constructor(room, pluginManager) {
     super(room, pluginManager);
