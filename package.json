@@ -1,7 +1,9 @@
 {
   "name": "the-darkest-lib",
+  "title": "TDLib",
   "version": "1.0.0",
   "description": "A spcific extension of Phaser game engine.",
+  "homepage": "https://github.com/FrancescoNegri/TheDarkestLib",
   "main": "lib/TDLib.js",
   "scripts": {
     "build": "webpack --env dev && webpack --env build",
@@ -29,7 +31,6 @@
   "bugs": {
     "url": "https://github.com/FrancescoNegri/TheDarkestLib/issues"
   },
-  "homepage": "https://github.com/FrancescoNegri/TheDarkestLib",
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.51",
     "@babel/core": "^7.0.0-beta.51",

@@ -21,7 +21,7 @@ const CONST = {
    * @type {string}
    * @since 1.0.0
    */
-  VERSION: '1.0.0',
+  VERSION: require('../package.json').version,
   /**
    * Phaser Release Version.
    *
