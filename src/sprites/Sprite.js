@@ -186,6 +186,7 @@ export default class Sprite extends Phaser.Physics.Arcade.Sprite {
    */
   create() {
     console.log('Created:', this.key, '- Type:', this.type, '- Behaviour:', this.behaviours.type);
+    this.setPipeline('Light2D');
   }
 
   /**

@@ -45,12 +45,12 @@
     "jsdom": "13.2.0",
     "jsdom-global": "3.0.2",
     "uglifyjs-webpack-plugin": "^2.1.2",
-    "webpack": "^4.29.6",
-    "webpack-cli": "^3.0.8",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
     "yargs": "^13.2.2"
   },
   "dependencies": {
     "filter-obj": "^1.1.0",
-    "phaser": "^3.16.2"
+    "phaser": "^3.24.1"
   }
 }

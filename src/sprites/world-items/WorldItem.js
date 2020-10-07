@@ -57,6 +57,5 @@ export default class WorldItem extends Sprite {
 
   create() {
     super.create();
-    this.setPipeline('Light2D'); // Da spostare in TDLSprite non appena il player supporterà la Light2D
   }
 }

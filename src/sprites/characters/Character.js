@@ -44,6 +44,5 @@ export default class Character extends Sprite {
 
   create() {
     super.create();
-    // this.setPipeline('Light2D');
   }
 }

@@ -28,5 +28,6 @@ export default class InentoryItem extends Sprite {
 
   create() {
     super.create();
+    this.resetPipeline(); // InventoryItems are not part of the Light2D pipeline!
   }
 }

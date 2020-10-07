@@ -18,6 +18,8 @@ export default class RoomSystem extends Phaser.Plugins.BasePlugin {
      * @type {Phaser.Scenes.SceneManager}
      */
     this.sceneManager = {};
+
+    this.currentRoom = null;
   }
 
   /**
@@ -25,9 +27,18 @@ export default class RoomSystem extends Phaser.Plugins.BasePlugin {
    * @param {TDLib.Rooms.Room} room - The class of the new room to add.
    * @param {boolean} [autoStart=true] - Specify if the room has to start.
    */
-  add(room, autoStart = true) {
-    console.log('Added room:', room.name);
-    this.sceneManager.add(room.name, room, autoStart);
+  start(room, autoStart = true) {
+    if (room) {
+      console.log('Starting room:', room.name);
+      if (this.currentRoom) this.sceneManager.remove(this.currentRoom.name);
+      if (room.name in this.sceneManager.keys) {
+        this.sceneManager.start(room.name);
+      } else {
+        this.sceneManager.add(room.name, room, autoStart);
+
+      }
+      this.currentRoom = room;
+    }
   }
 
   /**

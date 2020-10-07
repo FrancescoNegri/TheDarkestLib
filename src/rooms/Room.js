@@ -164,6 +164,7 @@ export default class Room extends Phaser.Scene {
         (Settings.ROOM_FRAME_IN_TILES_MOBILE + Settings.INVENTORY_HEIGHT_IN_TILES_MOBILE) * Settings.TILE_SIZE
       );
       this.cameras.main.setSize(
+        // eslint-disable-next-line max-len
         Settings.SCREEN_PROPS.calculatedWidth - 2 * (Settings.ROOM_FRAME_IN_TILES_MOBILE + Settings.INVENTORY_WIDTH_IN_TILES_MOBILE) * Settings.TILE_SIZE,
         Settings.ROOM_HEIGHT_IN_TILE * Settings.TILE_SIZE
       );
@@ -195,7 +196,7 @@ export default class Room extends Phaser.Scene {
       'backgroundLayer',
       this.map.addTilesetImage(Utils.findFileNameFromPath(this.assets.raw.image.tiles.background.path)),
       0, 0
-    );// .setPipeline('Light2D');
+    ).setPipeline('Light2D');
     this.layers.wallsLayer = this.map.createDynamicLayer(
       'wallsLayer',
       this.map.addTilesetImage(Utils.findFileNameFromPath(this.assets.raw.image.tiles.walls.path)),
@@ -219,7 +220,7 @@ export default class Room extends Phaser.Scene {
     this.map.objects.forEach(layer => {
       layer.objects.forEach(element => {
         _this;
-        // eslint-disable-next-line new-cap
+        // eslint-disable-next-line
         this[element.name] = new Settings.GAME_SPRITES[element.type].default(_this, element.x + element.width / 2, element.y - element.height / 2);
         this[element.name].setName(element.name);
       });
@@ -232,25 +233,23 @@ export default class Room extends Phaser.Scene {
    * @since 1.0.0
    */
   _applyBorderMasks() {
-    this.layers.borderMasksLayer.create(0,
-      0,
+    this.layers.borderMasksLayer.create(
+      0, 0,
       'top-border-mask-camera'
     ).setScrollFactor(0).setOrigin(0, 0);
 
-    this.layers.borderMasksLayer.create(0,
-      0,
+    this.layers.borderMasksLayer.create(
+      0, 0,
       'left-border-mask-camera'
     ).setScrollFactor(0).setOrigin(0, 0);
 
     this.layers.borderMasksLayer.create(
-      this.cameras.main.width - Settings.TILE_SIZE,
-      0,
+      this.cameras.main.width - Settings.TILE_SIZE, 0,
       'right-border-mask-camera'
     ).setScrollFactor(0).setOrigin(0, 0);
 
     this.layers.borderMasksLayer.create(
-      0,
-      this.cameras.main.height - Settings.TILE_SIZE,
+      0, this.cameras.main.height - Settings.TILE_SIZE,
       'bottom-border-mask-camera'
     ).setScrollFactor(0).setOrigin(0, 0);
   }
