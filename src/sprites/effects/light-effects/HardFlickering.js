@@ -17,13 +17,15 @@ export default class HardFlickering extends LightEffect {
           callback: () => {
             if (!this.stopped) {
               if (this.gameObject.initialConfig.graphicLight !== null) {
-                if (this.gameObject.graphicLight.intensity === 0) this.gameObject.graphicLight.setIntensity(this.gameObject.initialConfig.graphicLight.intensity);
-                else this.gameObject.graphicLight.setIntensity(0);
+                if (this.gameObject.graphicLight.intensity === 0) {
+                  this.gameObject.graphicLight.setIntensity(this.gameObject.initialConfig.graphicLight.intensity);
+                } else this.gameObject.graphicLight.setIntensity(0);
               }
 
               if (this.gameObject.initialConfig.diffusedLight !== null) {
-                if (this.gameObject.diffusedLight.intensity === 0) this.gameObject.diffusedLight.setIntensity(this.gameObject.initialConfig.diffusedLight.intensity);
-                else this.gameObject.diffusedLight.setIntensity(0);
+                if (this.gameObject.diffusedLight.intensity === 0) {
+                  this.gameObject.diffusedLight.setIntensity(this.gameObject.initialConfig.diffusedLight.intensity);
+                } else this.gameObject.diffusedLight.setIntensity(0);
               }
               setTimer();
             }

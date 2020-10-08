@@ -24,6 +24,7 @@ export default class UpdateManager extends Manager {
     super.boot();
     const events = this.systems.events;
 
+    // eslint-disable-next-line no-undef
     this.gameObjects = new Phaser.Structs.Set();
 
     events.on('update', this._sceneUpdate, this);

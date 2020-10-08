@@ -9,5 +9,6 @@ var Behaviours = {
   Inventory: require('./inventory/Inventory')
 };
 
+// eslint-disable-next-line no-undef
 Behaviours = Phaser.Utils.Objects.Extend(false, Behaviours, CONST);
 module.exports = Behaviours;

@@ -18,7 +18,9 @@ export default class Observable extends Behaviour {
       this._timer = this.gameObject.room.time.addEvent({
         delay: Settings.DEFAULT_MIN_TIME_TO_OBSERVE,
         callback: () => {
-          if (this.gameObject !== this.room.player && !this.room.player.isBlocked) this.room.player.actions.add(Actions.Observe, { target: this.gameObject });
+          if (this.gameObject !== this.room.player && !this.room.player.isBlocked) {
+            this.room.player.actions.add(Actions.Observe, { target: this.gameObject });
+          }
         },
         callbackScope: this
       });

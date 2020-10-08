@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import WorldItem from '../WorldItem';
 import Behaviours from '../../behaviours';
 import EffectComponent from '../../../components/EffectComponent';

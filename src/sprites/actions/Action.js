@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /**
  * Class representing a TDLAction.
  * @memberof TDLib.Components.Actions

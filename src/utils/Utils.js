@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import Settings from '../boot/Settings';
 
 const getScreenProps = () => {

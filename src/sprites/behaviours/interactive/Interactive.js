@@ -16,8 +16,9 @@ export default class Interactive extends Behaviour {
       invoker,
       () => {
         // Fare i controlli su quanta luce c'è nella stanza!
-        if (this.checkLight(this.gameObject.minLightLevelToExamineOrInteract)) console.log(this.gameObject.examineOrInteractText);
-        else console.log(this.gameObject.noLightExamineOrInteractText);
+        if (this.checkLight(this.gameObject.minLightLevelToExamineOrInteract)) {
+          console.log(this.gameObject.examineOrInteractText);
+        } else console.log(this.gameObject.noLightExamineOrInteractText);
         invoker.finish();
       }
     );

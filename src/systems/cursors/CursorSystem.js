@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import Actions from '../../sprites/actions';
 import Behaviours from '../../sprites/behaviours';
 import Phaser from 'phaser';

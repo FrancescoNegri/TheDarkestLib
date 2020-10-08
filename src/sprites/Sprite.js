@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import Behaviours from '../sprites/behaviours';
 import BehaviourComponent from '../components/BehaviourComponent';
 import Phaser from 'phaser';

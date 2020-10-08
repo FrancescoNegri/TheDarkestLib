@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import LightEffect from './LightEffect';
 
 export default class RadiusFlickering extends LightEffect {

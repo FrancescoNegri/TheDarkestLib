@@ -29,6 +29,7 @@ export default class LightSourceManager extends Manager {
 
     this.lightSources.getChildren().forEach(light => {
       if (light.isOn) {
+        // eslint-disable-next-line max-len
         let singleLightContribute = light.config.diffusedLight.intensity / (Math.abs(light.x + light.config.offset.x - target.x) ^ 2);
 
         // COSE
@@ -51,6 +52,7 @@ export default class LightSourceManager extends Manager {
     });
     let averageLightsContribute = 0;
 
+    // eslint-disable-next-line max-len
     if (singleLightIntensityAccumulator !== 0) averageLightsContribute = Math.floor((singleLightIntensityAccumulator * 10000 / this.room.layers.wallsLayer.width / GlobalSettings.TILE_SIZE) * 100) / 100 + 0.3;
     return averageLightsContribute;
   }
