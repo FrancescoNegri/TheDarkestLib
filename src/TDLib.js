@@ -7,10 +7,6 @@
 import CONST from './const';
 import Phaser from 'phaser';
 
-/**
- * @namespace TDLib
- */
-
 var TDLib = {
   Components: require('./components'),
   Game: require('./boot/Game'),

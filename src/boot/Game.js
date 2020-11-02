@@ -140,6 +140,13 @@ export default class Game {
     this.config.banner = false;
   }
 
+  /**
+  * TODO.
+  *
+  * @method TDLib.Game#_setGameSprites
+  * @protected
+  * @since 1.0.0
+  */
   _setGameSprites(obj) {
     function haveChildObject(father) {
       let flag = false;

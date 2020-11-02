@@ -8,11 +8,12 @@ var CONST = require('../const');
 var Settings = require('./Settings');
 
 /**
- * Called automatically by Phaser.Game and responsible for creating the console.log debug header.
+ * Called automatically by TDLib.Game and responsible for creating the console.log debug header.
+ * You can customize or disable the header via the Game config object.
  *
- * You can customize or disable the header via the Game Config object.
- *
- * @function TDLib.Boot.DebugHeader
+ * @function DebugHeader
+ * @memberof TDLib
+ * @private
  * @since 1.0.0
  *
  * @param {TDLib.Game} game - The TDLib.Game instance which will output this debug header.
