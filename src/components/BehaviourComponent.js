@@ -15,6 +15,7 @@ import Behaviours from '../sprites/behaviours';
  *
  * @class BehaviourComponent
  * @memberof TDLib.Components
+ * @extends TDLib.Components.Component
  * @constructor
  * @since 1.0.0
  *

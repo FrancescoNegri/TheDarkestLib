@@ -14,6 +14,7 @@ import Actions from '../sprites/actions';
  *
  * @class ActionComponent
  * @memberof TDLib.Components
+ * @extends TDLib.Components.Component
  * @constructor
  * @since 1.0.0
  *

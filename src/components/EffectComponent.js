@@ -15,6 +15,7 @@ import LightSource from '../sprites/world-items/light-sources/LightSource';
  *
  * @class EffectComponent
  * @memberof TDLib.Components
+ * @extends TDLib.Components.Component
  * @constructor
  * @since 1.0.0
  *

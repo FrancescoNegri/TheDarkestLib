@@ -4,14 +4,13 @@
  * @license      {@link https://github.com/FrancescoNegri/TheDarkestLib/blob/master/LICENSE|MIT License}
  */
 
+import Phaser from 'phaser';
+
 /**
  * Global consts.
  *
  * @ignore
  */
-
-import Phaser from 'phaser';
-
 const CONST = {
   /**
    * TheDarkestLib Release Version.
