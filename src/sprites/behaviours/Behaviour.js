@@ -75,7 +75,7 @@ export default class Behaviour {
   }
 
   checkLight(value) {
-    if (this.room.lightSources.calculateLightsContribuitePoint(this.gameObject) >= value) return true;
+    if (this.room.lightSources.calculateLightsContribuiteAtPoint(this.gameObject) >= value) return true;
     return false;
   }
 }

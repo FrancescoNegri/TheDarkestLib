@@ -4,13 +4,12 @@
  * @license      {@link https://github.com/FrancescoNegri/TheDarkestLib/blob/master/LICENSE|MIT License}
  */
 
-import Manager from '../Manager';
-import Settings from './Settings';
+import Manager from './Manager';
 
 /**
  * @classdesc
  * Class representing a LayerManager, responsible to manage
- * the layers order, in order to have all the elements rendered correctly.
+ * the layers order, such that all the elements are rendered correctly.
  * Layers are Phaser.GameObjects.Group.
  *
  * @class LayerManager
@@ -20,31 +19,30 @@ import Settings from './Settings';
  * @since 1.0.0
  *
  * @param {TDLib.Rooms.Room|Phaser.Scene} room - The room running the Manager.
- * @param {Phaser.Plugins.PluginManager} - A reference to Phaser PluginManager.
+ * @param {Phaser.Plugins.PluginManager} pluginManager - A reference to Phaser PluginManager.
  */
 export default class LayerManager extends Manager {
   constructor(room, pluginManager) {
     super(room, pluginManager);
     /**
-     * The size in cells of each Layer.
+     * The size in cells of each layer.
      * @type {number}
      * @name TDLib.Managers.LayerManager#layerSize
+     * @default 10
      * @since 1.0.0
      */
-    this.layerSize = Settings.layerSize;
+    this.layerSize = 10;
 
     /**
-     * The starting depth of Layers.
+     * The starting depth of layers.
      * @type {number}
      * @name TDLib.Managers.LayerManager#startingDepth
+     * @default 0
      * @since 1.0.0
      */
-    this.strartingDepth = Settings.startingDepth;
+    this.strartingDepth = 0;
   }
 
-  /**
-   * @lends TDLib.Managers.Manager.boot
-   */
   boot() {
     super.boot();
     /**
@@ -90,7 +88,7 @@ export default class LayerManager extends Manager {
     /**
      * The Layer containing the NPCs.
      * @type {Phaser.GameObjects.Group}
-     * @name TDLib.Managers.LayerManager#playerLayer
+     * @name TDLib.Managers.LayerManager#npcLayer
      * @since 1.0.0
      */
     this.npcLayer = this.room.add.group();
@@ -98,6 +96,7 @@ export default class LayerManager extends Manager {
     /**
      * The Layer containing the Player.
      * @type {Phaser.GameObjects.Group}
+     * @name TDLib.Managers.LayerManager#playerLayer
      * @since 1.0.0
      */
     this.playerLayer = this.room.add.group();
