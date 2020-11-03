@@ -56,28 +56,33 @@ export default class EffectComponent extends Component {
 
     if (key in Effects) this.currentEffect = new Effects[key](this, config);
     else if (key in Effects.LightEffects) {
-      if (this.gameObject instanceof LightSource) this.currentEffect = new Effects.LightEffects[key](this, config);
-      else console.log(key + ' can only be run by a LightSource');
+      if (this.gameObject instanceof LightSource) {
+        if (this.gameObject.isOn) {
+          this.currentEffect = new Effects.LightEffects[key](this, config);
+        } else console.log('Turn on the LightSource', this.gameObject, 'to play', key, 'effect on it!');
+      } else console.log(key + ' can only be run by a LightSource');
     } else {
       console.log('No effect with key: ', key);
     }
 
-    if (this.currentEffect) this.currentEffect.play();
+    if (this.currentEffect) {
+      this.currentEffect.play();
 
-    if (duration > 0) {
-      this.timer = this.gameObject.room.time.addEvent({
-        delay: duration,
-        callback: () => {
-          this.stop();
-        },
-        callbackScope: this,
-        repeat: 0
-      });
-      console.log(this.currentEffect.name + 'Effect started for', duration, 'ms');
-    } else if (duration === -1) {
-      console.log(this.currentEffect.name + 'Effect started');
-    } else {
-      console.log('You must use a positive value!');
+      if (duration > 0) {
+        this.timer = this.gameObject.room.time.addEvent({
+          delay: duration,
+          callback: () => {
+            this.stop();
+          },
+          callbackScope: this,
+          repeat: 0
+        });
+        console.log(this.currentEffect.name + 'Effect started for', duration, 'ms');
+      } else if (duration === -1) {
+        console.log(this.currentEffect.name + 'Effect started');
+      } else {
+        console.log('You must use a positive duration value!');
+      }
     }
   }
 

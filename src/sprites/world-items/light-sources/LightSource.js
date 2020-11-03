@@ -27,13 +27,14 @@ export default class LightSource extends WorldItem {
 
     this.setGravityY(0);
 
-    this.initialConfig = {
+    this.config = {
       graphicLight: graphicLightConfig,
       diffusedLight: diffusedLightConfig,
       offset: offset
     };
 
-    this.config = this.initialConfig;
+    this.diffusedLight = null;
+    this.graphicLight = null;
 
     this.isOn = false;
     if (isOn) {
@@ -46,19 +47,22 @@ export default class LightSource extends WorldItem {
   }
 
   /**
-   * Turn on the lights of the LightSource by creating new ones.
+   * Turn on the lights of the LightSource by creating new ones if null or adjusting intensity.
    */
   turnOn() {
     if (!this.isOn) {
-      if (this.initialConfig.diffusedLight !== null) {
-        this.diffusedLight = this.room.lights.addLight(this.x + this.initialConfig.offset.x, this.y + this.initialConfig.offset.y, this.initialConfig.diffusedLight.radius).setIntensity(this.initialConfig.diffusedLight.intensity);
-        this.room.lightSources.diffusedLights.push(this.diffusedLight);
-      }
 
-      if (this.initialConfig.graphicLight !== null) {
-        this.graphicLight = this.room.lights.addLight(this.x + this.initialConfig.offset.x, this.y + this.initialConfig.offset.y, this.initialConfig.graphicLight.radius).setIntensity(this.initialConfig.graphicLight.intensity);
-        this.room.lightSources.graphicLights.push(this.graphicLight);
-      }
+      if (this.diffusedLight === null) {
+        if (this.config.diffusedLight !== null) {
+          this.diffusedLight = this.room.lights.addLight(this.x + this.config.offset.x, this.y + this.config.offset.y, this.config.diffusedLight.radius).setIntensity(this.config.diffusedLight.intensity);
+        }
+      } else this.diffusedLight.setIntensity(this.config.diffusedLight.intensity);
+
+      if (this.graphicLight === null) {
+        if (this.config.graphicLight !== null) {
+          this.graphicLight = this.room.lights.addLight(this.x + this.config.offset.x, this.y + this.config.offset.y, this.config.graphicLight.radius).setIntensity(this.config.graphicLight.intensity);
+        }
+      } else this.graphicLight.setIntensity(this.config.graphicLight.intensity);
 
       this.isOn = true;
     }
@@ -66,24 +70,17 @@ export default class LightSource extends WorldItem {
 
   /**
      * Turn off the lights of the LightSource by deleting the existing ones.
-     * @param {boolean} [stopBehaviours=true] - If true, turning off the light stops all the behaviours.
      */
-  turnOff(stopBehaviours = true) {
+  turnOff() {
+    this.effects.stop();
 
-    // if (stopBehaviours) this.lightBehaviour.stopAllBehaviours();
     if (this.isOn) {
-      let diffusedLightindex = this.room.lightSources.diffusedLights.indexOf(this.diffusedLight);
-
-      if (diffusedLightindex > -1) {
-        this.room.lightSources.diffusedLights.splice(diffusedLightindex, 1);
-        this.room.lights.removeLight(this.diffusedLight);
+      if (this.diffusedLight !== null) {
+        this.diffusedLight.setIntensity(0);
       }
 
-      let graphicLightindex = this.room.lightSources.graphicLights.indexOf(this.graphicLight);
-
-      if (graphicLightindex > -1) {
-        this.room.lightSources.graphicLights.splice(graphicLightindex, 1);
-        this.room.lights.removeLight(this.graphicLight);
+      if (this.graphicLight !== null) {
+        this.graphicLight.setIntensity(0);
       }
 
       this.isOn = false;

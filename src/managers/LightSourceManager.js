@@ -6,6 +6,7 @@
 
 import Manager from './Manager';
 import GlobalSettings from '../boot/Settings';
+import LightSource from '../sprites/world-items/light-sources/LightSource';
 
 /**
  * @classdesc
@@ -27,26 +28,6 @@ import GlobalSettings from '../boot/Settings';
 export default class LightSourceManager extends Manager {
   constructor(room, pluginManager) {
     super(room, pluginManager);
-
-    /**
-     * An array containing all the graphic lights present in the room.
-     * Graphic lights do not contribute to light computations.
-     * They only have an esthetic function and usually display a high intensity and a low radius.
-     * @type {Phaser.GameObjects.Light[]}
-     * @name TDLib.Managers.LightSourceManager#graphicLights
-     * @since 1.0.0
-     */
-    this.graphicLights = [];
-
-    /**
-     * An array containing all the diffused lights present in the room.
-     * Diffused lights contribute to light computations.
-     * They usually display a low intensity and a large radius.
-     * @type {Phaser.GameObjects.Light[]}
-     * @name TDLib.Managers.LightSourceManager#diffusedLights
-     * @since 1.0.0
-     */
-    this.diffusedLights = [];
   }
 
   boot() {
@@ -62,46 +43,73 @@ export default class LightSourceManager extends Manager {
   }
 
   /**
-   * Add a new light source to the light sources group.
+   * Add a new light source to the lightSources group,
+   * which keeps track of all the LightSource elements in the room.
+   *
    * @method TDLib.Managers.LightSourceManager#add
    * @since 1.0.0
+   *
+   * @param {LightSource} source - The LightSource to add to the group.
    */
   add(source) {
-    this.lightSources.add(source, true);
-
-    return source;
+    if (source instanceof LightSource) this.lightSources.add(source, true);
   }
 
+  /**
+   * Compute the contribute given by all the lights present
+   * in the room for a specified target and returns a number ranging from 0 to 1.
+   *
+   * @method TDLib.Managers.LightSourceManager#calculateLightsContribuiteAtPoint
+   * @since 1.0.0
+   *
+   * @param {Object} target - The target for which it is computed the light contribute.
+   * @param {number} target.x - The x coordinate of the target.
+   *
+   * @return {number} A number indicating the light contribute for the specified target between 0 and 1.
+   */
   calculateLightsContribuiteAtPoint(target) {
     let contributesAccumulator = 0;
 
-    this.lightSources.getChildren().forEach(light => {
-      if (light.isOn) {
+    this.lightSources.getChildren().forEach(lightSource => {
+      if (lightSource.isOn) {
         // eslint-disable-next-line max-len
-        let singleLightContribute = light.config.diffusedLight.intensity / (Math.abs(light.x + light.config.offset.x - target.x) ^ 2);
+        let singleLightContribute = lightSource.diffusedLight.intensity / (Math.abs(lightSource.x + lightSource.config.offset.x - target.x) ^ 2);
 
         // Contributo modificato in base all'effetto corrente
-        if (light.effects.currentEffect) {
-          singleLightContribute *= light.effects.currentEffect.contributeFactor;
+        if (lightSource.effects.currentEffect) {
+          singleLightContribute *= lightSource.effects.currentEffect.contributeFactor;
         }
 
         contributesAccumulator += singleLightContribute;
       }
     });
 
+    console.log(Math.floor(contributesAccumulator * 10000) / 1000);
     return Math.floor(contributesAccumulator * 10000) / 1000;
   }
 
+  /**
+   * Compute the average contribute given by all the lights present
+   * in the room and returns a number ranging from 0 to 1.
+   *
+   * @method TDLib.Managers.LightSourceManager#calculateAverageLightsContribute
+   * @since 1.0.0
+   *
+   * @return {number} The average light contribute in the room between 0 and 1.
+   */
   calculateAverageLightsContribute() {
     let contributesAccumulator = 0;
 
-    this.diffusedLights.forEach(light => {
-      contributesAccumulator += light.intensity;
-    });
     let averageLightsContribute = 0;
 
-    // eslint-disable-next-line max-len
-    if (contributesAccumulator !== 0) averageLightsContribute = Math.floor((contributesAccumulator * 10000 / this.room.layers.wallsLayer.width / GlobalSettings.TILE_SIZE) * 100) / 100 + 0.3;
+    if (this.lightSources !== null) {
+      this.lightSources.getChildren().forEach(lightSource => {
+        if (lightSource.isOn) contributesAccumulator += lightSource.diffusedLight.intensity;
+      });
+      // eslint-disable-next-line max-len
+      if (contributesAccumulator !== 0) averageLightsContribute = Math.floor((contributesAccumulator * 10000 / this.room.layers.wallsLayer.width / GlobalSettings.TILE_SIZE) * 100) / 100 + 0.3;
+    }
+
     return averageLightsContribute;
   }
 }

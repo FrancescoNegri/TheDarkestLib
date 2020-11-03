@@ -16,15 +16,15 @@ export default class HardFlickering extends LightEffect {
           delay: Math.floor(Math.random() * (this.config.maxTime - this.config.minTime)) + this.config.minTime,
           callback: () => {
             if (!this.stopped) {
-              if (this.gameObject.initialConfig.graphicLight !== null) {
+              if (this.gameObject.config.graphicLight !== null) {
                 if (this.gameObject.graphicLight.intensity === 0) {
-                  this.gameObject.graphicLight.setIntensity(this.gameObject.initialConfig.graphicLight.intensity);
+                  this.gameObject.graphicLight.setIntensity(this.gameObject.config.graphicLight.intensity);
                 } else this.gameObject.graphicLight.setIntensity(0);
               }
 
-              if (this.gameObject.initialConfig.diffusedLight !== null) {
+              if (this.gameObject.config.diffusedLight !== null) {
                 if (this.gameObject.diffusedLight.intensity === 0) {
-                  this.gameObject.diffusedLight.setIntensity(this.gameObject.initialConfig.diffusedLight.intensity);
+                  this.gameObject.diffusedLight.setIntensity(this.gameObject.config.diffusedLight.intensity);
                 } else this.gameObject.diffusedLight.setIntensity(0);
               }
               setTimer();
@@ -42,11 +42,11 @@ export default class HardFlickering extends LightEffect {
   stop() {
     super.stop(() => {
       if (this.config.finalState === 'on') {
-        if (this.gameObject.initialConfig.graphicLight !== null) {
-          this.gameObject.graphicLight.setIntensity(this.gameObject.initialConfig.graphicLight.intensity);
+        if (this.gameObject.config.graphicLight !== null) {
+          this.gameObject.graphicLight.setIntensity(this.gameObject.config.graphicLight.intensity);
         }
-        if (this.gameObject.initialConfig.diffusedLight !== null) {
-          this.gameObject.diffusedLight.setIntensity(this.gameObject.initialConfig.diffusedLight.intensity);
+        if (this.gameObject.config.diffusedLight !== null) {
+          this.gameObject.diffusedLight.setIntensity(this.gameObject.config.diffusedLight.intensity);
         }
       } else if (this.config.finalState === 'off') {
         this.gameObject.turnOff();
