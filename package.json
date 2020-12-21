@@ -52,6 +52,6 @@
   },
   "dependencies": {
     "filter-obj": "^2.0.1",
-    "phaser": "^3.50.0"
+    "phaser": "^3.50.1"
   }
 }

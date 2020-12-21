@@ -71,7 +71,12 @@ export default class Screen extends Phaser.Scene {
 
   }
 
-  change(newScene) {
+  /**
+   * Add (and start) a new  Phaser.Scene to the Phaser.SceneManager.
+   * @param {Phaser.Scene | TDLib.Rooms.Room | TDLib.Screens.Screen} newScene - The new scene to start.
+   * @since 1.0.0
+   */
+  start(newScene) {
     this.scene.remove(this.key);
     if (newScene.prototype instanceof Room) {
       this.rooms.start(newScene, true);
