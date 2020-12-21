@@ -5,14 +5,16 @@ const getScreenProps = () => {
   var returnValue = {};
 
   // cz : ah = 1 : mh
-  if (Settings.DEVICE === 'MOBILE') {
+  if (Settings.DEVICE === 'Mobile') {
     returnValue.availHeight = window.innerHeight;
     returnValue.availWidth = window.innerWidth;
     returnValue.calculatedZoom = Math.floor(returnValue.availHeight / ((Settings.ROOM_HEIGHT_IN_TILE + Settings.INVENTORY_HEIGHT_IN_TILES_MOBILE + Settings.ROOM_FRAME_IN_TILES_MOBILE * 2) * Settings.TILE_SIZE) * 100) / 100;
-  } else {
+  } else if (Settings.DEVICE === 'Desktop') {
     returnValue.availHeight = screen.height;
     returnValue.availWidth = screen.width;
     returnValue.calculatedZoom = Math.floor(returnValue.availHeight / ((Settings.ROOM_HEIGHT_IN_TILE + Settings.INVENTORY_HEIGHT_IN_TILES_DESKTOP + Settings.ROOM_FRAME_IN_TILES_DESKTOP * 2) * Settings.TILE_SIZE) * 100) / 100;
+  } else {
+    console.warn('Unsupported device.');
   }
 
   console.log('ZOOM: ' + returnValue.calculatedZoom);

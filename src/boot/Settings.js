@@ -105,7 +105,7 @@ var Settings = {
    * @type {String}
    * @since 1.0.0
    */
-  DEVICE: 'Desktop',
+  DEVICE: null,
   STARTING_ROOM: null,
   GAME_SPRITES: null
 };

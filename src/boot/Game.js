@@ -12,6 +12,7 @@ import Systems from '../systems';
 import Boot from './Boot';
 import Phaser from 'phaser';
 import filterObj from 'filter-obj';
+import DeviceDetector from 'device-detector-js';
 
 /**
  * @classdesc
@@ -41,6 +42,14 @@ export default class Game {
      * @since 1.0.0
      */
     this.config = config;
+
+    const userAgent = navigator.userAgent;
+    // const userAgent = 'Apple-iPhone6C2/1202.440';
+
+    Settings.DEVICE = (new DeviceDetector()).parse(userAgent).device.type;
+    Settings.DEVICE = Settings.DEVICE.charAt(0).toUpperCase() + Settings.DEVICE.slice(1);
+    if (Settings.DEVICE === 'Smartphone' || Settings.DEVICE === 'Tablet') Settings.DEVICE = 'Mobile';
+
     this._setScreenConfig();
     this._setPhysicsConfig();
     this._setPlugins();
@@ -48,7 +57,6 @@ export default class Game {
     this._setHeaderProps();
     this._finalizeConfig();
 
-    /** ************ TODO: Aggiungere il device e la funzione per determinarlo **************/
     Settings.STARTING_ROOM = this.config.startingRoom;
     Settings.GAME_SPRITES = this._setGameSprites(Phaser.Utils.Objects.Clone(this.config.sprites));
     Settings.GAME = new Phaser.Game(this.config);

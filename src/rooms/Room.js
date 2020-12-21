@@ -132,7 +132,6 @@ export default class Room extends Phaser.Scene {
   create(player) {
     this.player = player.setName('player');
     this.lights.enable(); // Boot Phaser's LightManager
-    // this.scene.bringToTop(CursorManager.CURSOR_SCENE_KEY); // Add the cursor to the Room
     this.scene.bringToTop('CursorScene');
 
     this._setCameraViewport();
@@ -158,7 +157,7 @@ export default class Room extends Phaser.Scene {
    * @since 1.0.0
    */
   _setCameraViewport() {
-    if (Settings.DEVICE === 'MOBILE') {
+    if (Settings.DEVICE === 'Mobile') {
       this.cameras.main.setPosition(
         (Settings.ROOM_FRAME_IN_TILES_MOBILE + Settings.INVENTORY_WIDTH_IN_TILES_MOBILE) * Settings.TILE_SIZE,
         (Settings.ROOM_FRAME_IN_TILES_MOBILE + Settings.INVENTORY_HEIGHT_IN_TILES_MOBILE) * Settings.TILE_SIZE
@@ -168,7 +167,7 @@ export default class Room extends Phaser.Scene {
         Settings.SCREEN_PROPS.calculatedWidth - 2 * (Settings.ROOM_FRAME_IN_TILES_MOBILE + Settings.INVENTORY_WIDTH_IN_TILES_MOBILE) * Settings.TILE_SIZE,
         Settings.ROOM_HEIGHT_IN_TILE * Settings.TILE_SIZE
       );
-    } else {
+    } else if (Settings.DEVICE === 'Desktop') {
       this.cameras.main.setPosition(
         Settings.ROOM_FRAME_IN_TILES_DESKTOP * Settings.TILE_SIZE,
         Settings.ROOM_FRAME_IN_TILES_DESKTOP * Settings.TILE_SIZE
@@ -177,6 +176,8 @@ export default class Room extends Phaser.Scene {
         Settings.SCREEN_PROPS.calculatedWidth - 2 * Settings.ROOM_FRAME_IN_TILES_DESKTOP * Settings.TILE_SIZE,
         Settings.ROOM_HEIGHT_IN_TILE * Settings.TILE_SIZE
       );
+    } else {
+      console.warn('Unsupported device.');
     }
   }
 
@@ -192,17 +193,17 @@ export default class Room extends Phaser.Scene {
       tileHeight: Settings.TILE_SIZE
     });
 
-    this.layers.backgroundLayer = this.map.createDynamicLayer(
+    this.layers.backgroundLayer = this.map.createLayer(
       'backgroundLayer',
       this.map.addTilesetImage(Utils.findFileNameFromPath(this.assets.raw.image.tiles.background.path)),
       0, 0
     ).setPipeline('Light2D');
-    this.layers.wallsLayer = this.map.createDynamicLayer(
+    this.layers.wallsLayer = this.map.createLayer(
       'wallsLayer',
       this.map.addTilesetImage(Utils.findFileNameFromPath(this.assets.raw.image.tiles.walls.path)),
       0, 0
     );
-    this.layers.wallsMaskLayer = this.map.createDynamicLayer(
+    this.layers.wallsMaskLayer = this.map.createLayer(
       'wallsMaskLayer',
       this.map.addTilesetImage(Utils.findFileNameFromPath(this.assets.raw.image.tiles.walls.bPath)),
       0, 0
@@ -219,7 +220,6 @@ export default class Room extends Phaser.Scene {
 
     this.map.objects.forEach(layer => {
       layer.objects.forEach(element => {
-        _this;
         // eslint-disable-next-line
         this[element.name] = new Settings.GAME_SPRITES[element.type].default(_this, element.x + element.width / 2, element.y - element.height / 2);
         this[element.name].setName(element.name);
