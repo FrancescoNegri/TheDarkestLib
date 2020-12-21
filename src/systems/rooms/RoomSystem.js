@@ -30,14 +30,16 @@ export default class RoomSystem extends Phaser.Plugins.BasePlugin {
    */
   start(room, autoStart = true) {
     if (room) {
-      console.log('Starting room:', room.name);
-      if (this.currentRoom) this.sceneManager.remove(this.currentRoom.name);
+      if (this.currentRoom) {
+        this.sceneManager.remove(this.currentRoom.name);
+        console.log('Stopping room:', this.currentRoom.name);
+      }
       if (room.name in this.sceneManager.keys) {
         this.sceneManager.start(room.name);
       } else {
         this.sceneManager.add(room.name, room, autoStart);
-
       }
+      console.log('Starting room:', room.name);
       this.currentRoom = room;
     }
   }

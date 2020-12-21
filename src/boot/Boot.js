@@ -42,7 +42,7 @@ export default class Boot extends Phaser.Scene {
    * @since 1.0.0
    */
   create() {
-    console.log('Booting all game systems...');
+    console.log('Booting game systems...');
     this.cursors.configure(Settings.GAME.scene);
     this.rooms.configure(Settings.GAME.scene);
     this.rooms.start(Settings.STARTING_ROOM); // TEMP NAME

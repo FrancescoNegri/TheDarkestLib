@@ -142,7 +142,7 @@ export default class Room extends Phaser.Scene {
 
     // Camera bounds, anche il wallsLayer
     this.cameras.main.setBounds(0, 0, this.layers.wallsLayer.width, this.layers.wallsLayer.height);
-    this.cameras.main.startFollow(this.player);
+    this.cameras.main.startFollow(this.player, true);
     this.cameras.main.setRoundPixels(true);
     // Physics Bounds, sarà solo lo spazio di gioco (togliamo il wall layer tutto attorno!!)
     this.physics.world.setBounds(
@@ -203,6 +203,7 @@ export default class Room extends Phaser.Scene {
       this.map.addTilesetImage(Utils.findFileNameFromPath(this.assets.raw.image.tiles.walls.path)),
       0, 0
     );
+    // TODO: valutare se anche per i walls serve la pipeline Light2D
     this.layers.wallsMaskLayer = this.map.createLayer(
       'wallsMaskLayer',
       this.map.addTilesetImage(Utils.findFileNameFromPath(this.assets.raw.image.tiles.walls.bPath)),
@@ -218,11 +219,15 @@ export default class Room extends Phaser.Scene {
   _createSprites() {
     let _this = this;
 
+    this.objects = {};
     this.map.objects.forEach(layer => {
       layer.objects.forEach(element => {
+        if (this.objects[element.name]) {
+          console.error(new Error('Duplicated name for object: ' + element.name));
+        }
         // eslint-disable-next-line
-        this[element.name] = new Settings.GAME_SPRITES[element.type].default(_this, element.x + element.width / 2, element.y - element.height / 2);
-        this[element.name].setName(element.name);
+        this.objects[element.name] = new Settings.GAME_SPRITES[element.type].default(_this, element.x + element.width / 2, element.y - element.height / 2);
+        this.objects[element.name].setName(element.name);
       });
     });
   }
