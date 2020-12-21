@@ -106,7 +106,7 @@ var Settings = {
    * @since 1.0.0
    */
   DEVICE: null,
-  STARTING_ROOM: null,
+  STARTING_SCENE: null,
   GAME_SPRITES: null
 };
 

@@ -12,6 +12,7 @@ var TDLib = {
   Game: require('./boot/Game'),
   Managers: require('./managers'),
   Rooms: require('./rooms'),
+  Screens: require('./screens'),
   Settings: require('./boot/Settings'),
   Sprites: require('./sprites'),
   Systems: require('./systems'),

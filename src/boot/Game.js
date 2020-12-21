@@ -16,8 +16,8 @@ import DeviceDetector from 'device-detector-js';
 
 /**
  * @classdesc
- * The TDLib.Game instance is the main controller for the entire game. It create an instace
- * of Phaser.Game with a default configuration of various parameters.
+ * The TDLib.Game instance is the main controller for the entire game. It creates an instace
+ * of Phaser.Game with a default configuration of several parameters.
  *
  * @class Game
  * @memberof TDLib
@@ -33,7 +33,6 @@ export default class Game {
   constructor(config) {
     /**
      * The parsed Game Configuration object.
-     *
      * The values stored within this object are read-only and should not be changed at run-time.
      *
      * @name TDLib.Game#config
@@ -57,7 +56,7 @@ export default class Game {
     this._setHeaderProps();
     this._finalizeConfig();
 
-    Settings.STARTING_ROOM = this.config.startingRoom;
+    Settings.STARTING_SCENE = this.config.startingScene;
     Settings.GAME_SPRITES = this._setGameSprites(Phaser.Utils.Objects.Clone(this.config.sprites));
     Settings.GAME = new Phaser.Game(this.config);
 
