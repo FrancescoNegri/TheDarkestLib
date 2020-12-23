@@ -229,7 +229,9 @@ export default class CursorSystem extends Phaser.Plugins.BasePlugin {
    * @since 1.0.0
    */
   showCursor() {
-    this.cursorScene.cursor.setVisible(true);
+    if (this.cursorScene.cursor) {
+      this.cursorScene.cursor.setVisible(true);
+    }
   }
 
   /**
@@ -237,6 +239,8 @@ export default class CursorSystem extends Phaser.Plugins.BasePlugin {
    * @since 1.0.0
    */
   hideCursor() {
-    this.cursorScene.cursor.setVisible(false);
+    if (this.cursorScene.cursor) {
+      this.cursorScene.cursor.setVisible(false);
+    }
   }
 }
