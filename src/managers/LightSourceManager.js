@@ -5,7 +5,6 @@
  */
 
 import Manager from './Manager';
-import GlobalSettings from '../boot/Settings';
 import LightSource from '../sprites/world-items/light-sources/LightSource';
 
 /**
@@ -98,18 +97,23 @@ export default class LightSourceManager extends Manager {
    * @return {number} The average light contribute in the room between 0 and 1.
    */
   calculateAverageLightsContribute() {
-    let contributesAccumulator = 0;
-
     let averageLightsContribute = 0;
+
+    let lsScore = 0;
+
+    let contributesAccumulator = 0;
 
     if (this.lightSources !== null) {
       this.lightSources.getChildren().forEach(lightSource => {
-        if (lightSource.isOn) contributesAccumulator += lightSource.diffusedLight.intensity;
+        lsScore = Math.pow(lightSource.diffusedLight.intensity, 2);
+        lsScore = lsScore / (Math.pow(lightSource.diffusedLight.intensity, 2) + 1);
+        lsScore = Math.pow(lsScore, 2);
+        contributesAccumulator += lsScore;
       });
-      // eslint-disable-next-line max-len
-      if (contributesAccumulator !== 0) averageLightsContribute = Math.floor((contributesAccumulator * 10000 / this.room.layers.wallsLayer.width / GlobalSettings.TILE_SIZE) * 100) / 100 + 0.3;
     }
 
+    contributesAccumulator /= (contributesAccumulator + Math.exp(-1.5 * contributesAccumulator));
+    averageLightsContribute = contributesAccumulator;
     return averageLightsContribute;
   }
 }

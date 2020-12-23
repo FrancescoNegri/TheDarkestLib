@@ -280,7 +280,7 @@ export default class Room extends Phaser.Scene {
    * @since 1.0.0
    */
   _updateMasksByLightDiffusion() {
-    this.averageLightsContribute = this.lightSources.calculateAverageLightsContribute();
+    this.averageLightsContribute = Math.round(this.lightSources.calculateAverageLightsContribute() * 10) / 10;
     this.layers.wallsMaskLayer.setAlpha(1 - this.averageLightsContribute);
   }
 }
