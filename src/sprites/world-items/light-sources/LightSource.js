@@ -14,9 +14,11 @@ export default class LightSource extends WorldItem {
    * @param {Object} graphicLightConfig - Configuration of the graphic light of the LightSource.
    * @param {number} graphicLightConfig.intensity - Intensity of the graphic light.
    * @param {number} graphicLightConfig.radius - Radius of the graphic light.
+   * @param {Phaser.Display.RGB} [graphicLightConfig.color=0xFFFFFF] - The color of the graphic light.
    * @param {Object} diffusedLightConfig - Configuration of the diffused light of the LightSource.
    * @param {number} diffusedLightConfig.intensity - Intensity of the diffused light.
    * @param {number} diffusedLightConfig.radius - Radius of the diffused light.
+   * @param {Phaser.Display.RGB} [diffusedLightConfig.color=0xFFFFFF] - The color of the diffused light.
    * @param {Object} offset - Offset of the graphic light respect the center of the sprite.
    * @param {number} offset.x - X offset.
    * @param {number} offset.y - Y offset.
@@ -54,15 +56,33 @@ export default class LightSource extends WorldItem {
 
       if (this.diffusedLight === null) {
         if (this.config.diffusedLight !== null) {
-          this.diffusedLight = this.room.lights.addLight(this.x + this.config.offset.x, this.y + this.config.offset.y, this.config.diffusedLight.radius).setIntensity(this.config.diffusedLight.intensity);
+          this.diffusedLight = this.room.lights.addLight(this.x + this.config.offset.x, this.y + this.config.offset.y, this.config.diffusedLight.radius);
+          this.diffusedLight.setIntensity(this.config.diffusedLight.intensity);
+          if (this.config.diffusedLight.color) {
+            this.diffusedLight.setColor(this.config.diffusedLight.color);
+          }
         }
-      } else this.diffusedLight.setIntensity(this.config.diffusedLight.intensity);
+      } else {
+        this.diffusedLight.setIntensity(this.config.diffusedLight.intensity);
+        if (this.config.diffusedLight.color) {
+          this.diffusedLight.setColor(this.config.diffusedLight.color);
+        }
+      }
 
       if (this.graphicLight === null) {
         if (this.config.graphicLight !== null) {
-          this.graphicLight = this.room.lights.addLight(this.x + this.config.offset.x, this.y + this.config.offset.y, this.config.graphicLight.radius).setIntensity(this.config.graphicLight.intensity);
+          this.graphicLight = this.room.lights.addLight(this.x + this.config.offset.x, this.y + this.config.offset.y, this.config.graphicLight.radius);
+          this.graphicLight.setIntensity(this.config.graphicLight.intensity);
+          if (this.config.graphicLight.color) {
+            this.graphicLight.setColor(this.config.graphicLight.color);
+          }
         }
-      } else this.graphicLight.setIntensity(this.config.graphicLight.intensity);
+      } else {
+        this.graphicLight.setIntensity(this.config.graphicLight.intensity);
+        if (this.config.graphicLight.color) {
+          this.graphicLight.setColor(this.config.graphicLight.color);
+        }
+      }
 
       this.isOn = true;
     }
