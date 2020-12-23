@@ -69,6 +69,7 @@ export default class LightSourceManager extends Manager {
   calculateLightsContribuiteAtPoint(target) {
     let contributesAccumulator = 0;
 
+    // PROBLEMA: intensity non deve fluttuare (usare valore nominale nelle config??)
     this.lightSources.getChildren().forEach(lightSource => {
       if (lightSource.isOn) {
         // eslint-disable-next-line max-len
@@ -89,7 +90,9 @@ export default class LightSourceManager extends Manager {
 
   /**
    * Compute the average contribute given by all the lights present
-   * in the room and returns a number ranging from 0 to 1.
+   * in the room and returns a number ranging between 0 and 1.
+   * The contributeFactor of light effects is not taken into account,
+   * since the real light intensity is employed.
    *
    * @method TDLib.Managers.LightSourceManager#calculateAverageLightsContribute
    * @since 1.0.0
@@ -99,15 +102,16 @@ export default class LightSourceManager extends Manager {
   calculateAverageLightsContribute() {
     let averageLightsContribute = 0;
 
-    let lsScore = 0;
-
     let contributesAccumulator = 0;
 
     if (this.lightSources !== null) {
       this.lightSources.getChildren().forEach(lightSource => {
+        let lsScore = 0;
+
         lsScore = Math.pow(lightSource.diffusedLight.intensity, 2);
         lsScore = lsScore / (Math.pow(lightSource.diffusedLight.intensity, 2) + 1);
         lsScore = Math.pow(lsScore, 2);
+
         contributesAccumulator += lsScore;
       });
     }
